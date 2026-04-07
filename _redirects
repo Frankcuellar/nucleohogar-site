@@ -1,2 +1,7 @@
-# Clean trailing slashes
-/index.html / 301
+# www → apex
+https://www.nucleohogar.com.mx/* https://nucleohogar.com.mx/:splat 301
+
+# Old .html URLs → clean URLs (from CMS-generated pages)
+/electricista-monterrey.html /electricista-monterrey/ 301
+/minisplit-monterrey.html /minisplit-monterrey/ 301
+/plomeria-monterrey.html /plomeria-monterrey/ 301
