@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nucleohogar.com.mx/sitemap.xml

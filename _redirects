@@ -1,0 +1,5 @@
+# Redirigir www a apex
+https://www.nucleohogar.com.mx/* https://nucleohogar.com.mx/:splat 301
+
+# Clean trailing slashes
+/index.html / 301
