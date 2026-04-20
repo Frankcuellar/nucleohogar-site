@@ -30,6 +30,7 @@ const DOMAIN = 'https://nucleohogar.com.mx'
 const GA4_ID = 'G-WJDX79TCKH'
 const BRAND = 'Núcleo Hogar'
 const BRAND_TAGLINE = 'Cuidamos lo que más amas'
+const DEFAULT_OG_IMAGE = `${DOMAIN}/og-default.jpg`
 
 if (!PROJECT_ID) {
   console.error('❌ Falta SANITY_PROJECT_ID. Configura tu archivo .env')
@@ -283,6 +284,7 @@ function servicePageHtml(s, otherServices) {
   const seoDesc = escapeHtml(s.seoDescription || generateSeoDescription(s))
   const seoKeywords = s.seoKeywords ? `\n  <meta name="keywords" content="${escapeHtml(s.seoKeywords)}">` : ''
   const heroImg = imageUrl(s.heroImage, 800)
+  const socialImage = imageUrl(s.heroImage, 1200) || DEFAULT_OG_IMAGE
   const heroImgTag = heroImg
     ? `<div class="hero-servicio-img"><img src="${heroImg}" alt="${escapeHtml(s.title)} — técnico profesional de ${BRAND} en Monterrey"></div>`
     : ''
@@ -391,10 +393,18 @@ function servicePageHtml(s, otherServices) {
   <meta property="og:type" content="website">
   <meta property="og:url" content="${DOMAIN}/${slug}/">
   <meta property="og:locale" content="es_MX">
-  <meta property="og:site_name" content="${BRAND}">${heroImg ? `\n  <meta property="og:image" content="${heroImg}">` : ''}
+  <meta property="og:site_name" content="${BRAND}">
+  <meta property="og:image" content="${socialImage}">
+  <meta property="og:image:secure_url" content="${socialImage}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${seoTitle}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${seoTitle}">
-  <meta name="twitter:description" content="${seoDesc}">${heroImg ? `\n  <meta name="twitter:image" content="${heroImg}">` : ''}
+  <meta name="twitter:description" content="${seoDesc}">
+  <meta name="twitter:image" content="${socialImage}">
+  <meta name="twitter:image:alt" content="${seoTitle}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
