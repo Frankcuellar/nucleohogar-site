@@ -393,7 +393,9 @@ function servicePageHtml(s, otherServices) {
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="${BRAND}">${heroImg ? `\n  <meta property="og:image" content="${heroImg}">` : ''}
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="robots" content="index, follow">
+  <meta name="twitter:title" content="${seoTitle}">
+  <meta name="twitter:description" content="${seoDesc}">${heroImg ? `\n  <meta name="twitter:image" content="${heroImg}">` : ''}
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
