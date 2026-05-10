@@ -388,6 +388,9 @@ function servicePageHtml(s, otherServices) {
   <title>${seoTitle}</title>
   <meta name="description" content="${seoDesc}">${seoKeywords}
   <link rel="canonical" href="${DOMAIN}/${slug}/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  ${heroImg ? `<link rel="preload" as="image" href="${heroImg}" fetchpriority="high">` : ''}
   <meta property="og:title" content="${seoTitle}">
   <meta property="og:description" content="${seoDesc}">
   <meta property="og:type" content="website">

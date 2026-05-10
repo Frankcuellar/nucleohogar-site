@@ -11,10 +11,13 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electricista, Minisplit y Plomero en Monterrey | Núcleo Hogar | WhatsApp</title>
+  <title>Electricista, Minisplit y Plomero en Monterrey | Núcleo Hogar</title>
   <meta name="description" content="Electricista, minisplit y plomero en Monterrey. Técnicos puntuales, trabajo limpio y precio claro. 200+ hogares atendidos. Cotización rápida por WhatsApp.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://nucleohogar.com.mx/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" as="image" href="/Hero.webp" fetchpriority="high">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Electricista, Minisplit y Plomero en Monterrey | Núcleo Hogar">
@@ -400,7 +403,7 @@ footer{background:#0C1829;color:rgba(255,255,255,.6);text-align:center;padding:2
     <div class="container">
       <img src="Logo%20Blanco.webp" alt="Núcleo Hogar — Cuidamos lo que más amas" class="footer-logo">
       <p class="footer-location">Monterrey, Nuevo León y área metropolitana</p>
-      <p class="footer-legal"><a href="#">Aviso de privacidad</a></p>
+      <p class="footer-legal"><a href="/aviso-de-privacidad/">Aviso de privacidad</a></p>
       <p class="footer-copy">&copy; 2026 Núcleo Hogar. Todos los derechos reservados.</p>
     </div>
   </footer>
@@ -427,14 +430,16 @@ if('IntersectionObserver' in window){var so=new IntersectionObserver(function(e)
     "description": "Servicios de electricista, instalación de minisplit y plomería en Monterrey y área metropolitana. Técnicos certificados, trabajo limpio y precio claro.",
     "url": "https://nucleohogar.com.mx",
     "telephone": "+528139078447",
-    "areaServed": {
-      "@type": "City",
-      "name": "Monterrey",
-      "containedInPlace": {
-        "@type": "State",
-        "name": "Nuevo León"
-      }
-    },
+    "areaServed": [
+      {"@type":"City","name":"Monterrey","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+      {"@type":"City","name":"San Pedro Garza García","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+      {"@type":"City","name":"Guadalupe","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+      {"@type":"City","name":"San Nicolás de los Garza","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+      {"@type":"City","name":"Apodaca","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+      {"@type":"City","name":"Escobedo","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+      {"@type":"City","name":"Santa Catarina","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+      {"@type":"City","name":"García","containedInPlace":{"@type":"State","name":"Nuevo León"}}
+    ],
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": "25.6866",
@@ -447,6 +452,7 @@ if('IntersectionObserver' in window){var so=new IntersectionObserver(function(e)
       "addressCountry": "MX"
     },
     "priceRange": "$$",
+    "image": "https://nucleohogar.com.mx/Hero.webp",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
