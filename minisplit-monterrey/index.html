@@ -290,8 +290,8 @@ footer.site ul li a:hover{color:var(--gold-soft)}
       <p class="btn-microcopy">Respuesta rápida · Sin compromiso</p>
       <div class="trust-row">
         <div class="t"><b>200+</b><span>hogares atendidos</span></div>
-        <div class="t"><b>4.9 ★</b><span>en reseñas reales</span></div>
-        <div class="t"><b>30 días</b><span>de garantía por escrito</span></div>
+        <div class="t"><b>5.0 ★</b><span>en Google · 3 opiniones</span></div>
+        <div class="t"><b>WhatsApp</b><span>atención y seguimiento</span></div>
       </div>
     </div>
     
@@ -359,7 +359,7 @@ footer.site ul li a:hover{color:var(--gold-soft)}
           <div class="quote-big">Cuidamos <span class="gold">lo que más amas</span>: tu casa, tu tiempo y tu tranquilidad.</div>
           <div class="stats">
             <div class="stat"><b>200+</b><span>Hogares atendidos</span></div>
-            <div class="stat"><b>30 días</b><span>De garantía</span></div>
+            <div class="stat"><b>5.0 ★</b><span>3 opiniones en Google</span></div>
           </div>
         </div>
       </div>
@@ -628,17 +628,21 @@ if(f&&h&&'IntersectionObserver' in window){
 document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('a[href*="wa.me"]').forEach(function(link){
     link.addEventListener('click',function(e){
-      var servicio='minisplit';
-      var ubicacion='otro',el=e.currentTarget;
-      if(el.classList.contains('nav-cta-desktop'))ubicacion='header';
-      else if(el.classList.contains('wa-float'))ubicacion='flotante';
-      else if(el.closest&&el.closest('.hero'))ubicacion='hero';
-      else if(el.closest&&el.closest('.final-cta'))ubicacion='cta_final';
-      else if(el.closest&&el.closest('.cases'))ubicacion='casos';
-      else if(el.closest&&el.closest('.detalles'))ubicacion='detalles';
-      else if(el.closest&&el.closest('.faq'))ubicacion='faq';
-      else if(el.closest&&el.closest('.solucion'))ubicacion='solucion';
-      else if(el.closest&&el.closest('footer'))ubicacion='footer';
+      var el=e.currentTarget;
+      var servicio=el.getAttribute('data-servicio')||'minisplit';
+      var ubicacion=el.getAttribute('data-ubicacion');
+      if(!ubicacion){
+        if(el.classList.contains('nav-cta-desktop'))ubicacion='header';
+        else if(el.classList.contains('wa-float'))ubicacion='floating_button';
+        else if(el.closest&&el.closest('.hero'))ubicacion='hero';
+        else if(el.closest&&el.closest('.final-cta'))ubicacion='final_cta';
+        else if(el.closest&&el.closest('.cases'))ubicacion='caso_'+servicio;
+        else if(el.closest&&el.closest('.detalles'))ubicacion='detalles';
+        else if(el.closest&&el.closest('.faq'))ubicacion='faq';
+        else if(el.closest&&el.closest('.solucion'))ubicacion='solucion';
+        else if(el.closest&&el.closest('footer'))ubicacion='footer';
+        else ubicacion='otro';
+      }
       if(typeof gtag==='function'){
         gtag('event','whatsapp_lead',{event_category:'conversion',event_label:servicio,servicio:servicio,ubicacion_boton:ubicacion,pagina:document.title});
       }
