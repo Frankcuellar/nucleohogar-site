@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg" aria-label="Núcleo Hogar — Cuidamos lo que más amas"><style>@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;family=Montserrat:wght@400;600;700&amp;display=swap');</style>
+  <defs>
+    <linearGradient id="discGradW" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A5298"/>
+      <stop offset="100%" stop-color="#1B3A6B"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(140,140)">
+    <circle r="120" fill="url(#discGradW)"/>
+    <circle r="111" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1"/>
+    <g fill="#ffffff">
+      <path d="M -78 -10 L 0 -66 L 78 -10 L 70 -2 L 0 -54 L -70 -2 Z"/>
+      <rect x="48" y="-44" width="11" height="24"/>
+    </g>
+    <text x="0" y="58" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="90" letter-spacing="-1" fill="#ffffff">NH</text>
+  </g>
+  <g transform="translate(290,0)">
+    <text x="0" y="140" font-family="'Cormorant Garamond', serif" font-style="italic" font-weight="600" font-size="120" fill="#ffffff" letter-spacing="-1">Núcleo</text>
+    <g>
+      <line x1="3" y1="175" x2="60" y2="175" stroke="#ffffff" stroke-width="2"/>
+      <text x="70" y="186" font-family="Montserrat, sans-serif" font-weight="600" font-size="42" fill="#ffffff" letter-spacing="14">HOGAR</text>
+    </g>
+    <text x="3" y="232" font-family="Montserrat, sans-serif" font-weight="400" font-size="17" fill="rgba(255,255,255,0.7)" letter-spacing="5">CUIDAMOS LO QUE MÁS AMAS</text>
+  </g>
+</svg>
