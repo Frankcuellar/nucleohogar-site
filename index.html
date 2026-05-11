@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJDX79TCKH"></script>
@@ -21,7 +21,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Electricista, Minisplit y Plomero en Monterrey | Núcleo Hogar">
-  <meta property="og:description" content="Técnicos puntuales, trabajo limpio y precio claro. 200+ hogares atendidos. Cotización rápida por WhatsApp.">
+  <meta property="og:description" content="Servicios confiables de electricidad, minisplit y plomería en Monterrey. Técnicos puntuales, trabajo limpio y precio claro. Atención por WhatsApp.">
   <meta property="og:url" content="https://nucleohogar.com.mx/">
   <meta property="og:image" content="https://nucleohogar.com.mx/Hero.webp">
   <meta property="og:locale" content="es_MX">
@@ -33,465 +33,985 @@
   <meta name="twitter:image" content="https://nucleohogar.com.mx/Hero.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-:root{--color-primary:#25D366;--color-primary-dark:#1DA851;--color-accent:#1B2A4A;--color-accent-warm:#D97706;--color-brand-dark:#0F1D32;--color-brand-ice:#F0F7FF;--color-text:#1a1a1a;--color-text-muted:#64748B;--color-text-on-dark:#fff;--color-bg:#fff;--color-bg-alt:#F0F7FF;--color-border:#e2e5eb;--font-family:'Inter',system-ui,-apple-system,sans-serif;--border-radius:8px;--border-radius-lg:16px;--shadow:0 2px 8px rgba(0,0,0,0.06);--shadow-lg:0 8px 24px rgba(0,0,0,0.12);--container-max:1100px;--container-padding:1.25rem}
+:root{
+  --navy:#0F2545;--navy-2:#1B3A6B;--navy-3:#2A5298;--navy-soft:#3a5784;
+  --gold:#C9A961;--gold-soft:#E4D4A8;--gold-deep:#a8884a;
+  --ink:#0a1628;--body:#3a3f4a;--body-2:#5a6271;--muted:#8a8478;
+  --paper:#F7F4EE;--paper-2:#EFEADD;--paper-3:#E6DFCE;
+  --line:#e1dbc9;--line-2:#c8bfa9;
+  --wa:#25D366;--wa-d:#128C7E;
+  --display:'Plus Jakarta Sans',system-ui,sans-serif;
+  --body-font:'Inter',system-ui,sans-serif;
+  --r-sm:10px;--r:16px;--r-lg:24px;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-family);font-size:1rem;line-height:1.6;color:var(--color-text);background:var(--color-bg);-webkit-font-smoothing:antialiased}
-img{max-width:100%;height:auto;display:block}
+body{font-family:var(--body-font);background:var(--paper);color:var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:16px;line-height:1.6}
+img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.container{max-width:var(--container-max);margin:0 auto;padding:0 var(--container-padding)}
+button{font-family:inherit}
+.container{max-width:1240px;margin:0 auto;padding:0 28px}
+
+h1,h2,h3,h4,h5{font-family:var(--display);color:var(--navy);margin:0;font-weight:700;letter-spacing:-0.022em;line-height:1.08}
+h1{font-size:clamp(36px,5vw,62px);letter-spacing:-0.03em;line-height:1.05}
+h2{font-size:clamp(28px,3.4vw,44px);letter-spacing:-0.025em;line-height:1.08}
+h3{font-size:clamp(20px,2.2vw,26px);letter-spacing:-0.02em}
+h4{font-size:18px;letter-spacing:-0.01em;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;line-height:1.6;color:var(--body)}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy-soft);display:inline-flex;align-items:center}
+.eyebrow .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:10px;vertical-align:middle}
+.eyebrow.gold{color:var(--gold-deep)}
+.eyebrow.light{color:var(--gold-soft)}
+
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:14.5px;letter-spacing:-0.005em;text-decoration:none;border:none;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s ease,color .2s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 24px -10px rgba(18,140,126,0.5)}
+.btn-wa:hover{background:var(--wa-d);box-shadow:0 14px 28px -12px rgba(18,140,126,0.65)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.btn-link{font-family:var(--display);color:var(--navy);text-decoration:none;font-weight:600;font-size:13.5px;border-bottom:1.5px solid var(--gold);padding-bottom:2px;display:inline-flex;align-items:center;gap:6px}
+.btn-link:hover{color:var(--navy-2);border-color:var(--navy-2)}
+.btn .ico-wa,.btn-link .ico-arrow{width:18px;height:18px;fill:currentColor}
+.btn-link .ico-arrow{stroke:currentColor;fill:none;stroke-width:2;width:14px;height:14px}
 
 /* HEADER */
-.site-header{padding:.75rem 0;background:var(--color-brand-dark);border-bottom:none;position:sticky;top:0;z-index:100}
-.header-inner{display:flex;align-items:center;justify-content:space-between}
-.header-logo{display:flex;align-items:center;gap:.6rem}
-.header-logo img{height:40px;width:40px;object-fit:contain}
-.header-logo-text{color:#fff;font-size:1.15rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
-.header-logo-sub{display:block;font-size:.6rem;font-weight:400;color:rgba(255,255,255,.55);letter-spacing:.04em;text-transform:uppercase;margin-top:1px}
-.header-nav{display:flex;align-items:center;gap:1.75rem}
-.header-nav a{color:rgba(255,255,255,.85);font-size:.875rem;font-weight:500;transition:color .2s;white-space:nowrap}
-.header-nav a:hover{color:#fff}
-.header-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--color-primary);color:#fff;font-weight:600;font-size:.875rem;padding:.6rem 1.25rem;border-radius:var(--border-radius);transition:background .2s;white-space:nowrap}
-.header-cta:hover{background:var(--color-primary-dark)}
-.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:#fff}
-.menu-toggle svg{display:block}
-@media(max-width:767px){
-  .header-nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--color-brand-dark);flex-direction:column;padding:1rem var(--container-padding) 1.5rem;gap:0;border-top:1px solid rgba(255,255,255,.1);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-  .header-nav.open{display:flex}
-  .header-nav a{padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.06);width:100%;font-size:1rem}
-  .header-nav a:last-of-type{border-bottom:none}
-  .header-nav .header-cta{margin-top:.5rem;width:100%;justify-content:center;padding:.75rem 1.25rem}
-  .menu-toggle{display:block}
-}
-
-/* TIPOGRAFÍA */
-section h2{font-size:clamp(1.5rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:2rem;color:var(--color-accent)}
-section h3{font-size:1.125rem;font-weight:600;margin-bottom:.5rem;color:var(--color-accent)}
-
-/* BOTÓN WA */
-.btn-whatsapp{display:inline-flex;align-items:center;gap:.5rem;background:var(--color-primary);color:#fff;font-weight:600;font-size:1rem;padding:.875rem 1.75rem;border-radius:var(--border-radius);transition:background .2s,transform .1s;cursor:pointer;border:none}
-.btn-whatsapp:hover{background:var(--color-primary-dark)}
-.btn-whatsapp:active{transform:scale(.98)}
-.btn-whatsapp.btn-lg{font-size:1.125rem;padding:1rem 2rem}
-.btn-whatsapp-light{background:#fff;color:var(--color-accent)}
-.btn-whatsapp-light:hover{background:#f0f0f0}
-.btn-whatsapp-light svg{fill:var(--color-primary)}
-.btn-microcopy{font-size:clamp(0.8rem,2vw,0.875rem);color:var(--color-text-muted);margin-top:.5rem}
-.btn-microcopy-light{color:rgba(255,255,255,.7)}
-
-/* FLOTANTE */
-.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:60px;height:60px;background:var(--color-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:1000;transition:transform .2s,opacity .3s}
-.whatsapp-float:hover{transform:scale(1.08)}
-
-/* SECCIONES */
-section{padding:5rem 0}
+header.nav{position:sticky;top:0;z-index:50;background:rgba(247,244,238,0.92);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img.brand-logo{height:46px;width:auto}
+.brand .wordmark{display:flex;flex-direction:column;line-height:1}
+.brand .wm-1{font-family:var(--display);font-weight:700;font-size:19px;color:var(--navy);letter-spacing:-0.02em}
+.brand .wm-2{font-family:var(--display);font-weight:600;font-size:9.5px;letter-spacing:0.24em;color:var(--navy-soft);margin-top:3px}
+nav.links{display:flex;gap:30px;align-items:center}
+nav.links a{color:var(--navy);text-decoration:none;font-size:14px;font-weight:500;font-family:var(--display);position:relative}
+nav.links a:hover{color:var(--navy-2)}
+nav.links a:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+nav.links a:hover:after{transform:scaleX(1)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--navy)}
 
 /* HERO */
-.hero{padding:5rem 0 4rem;background:var(--color-bg)}
-.hero-grid{display:grid;gap:2.5rem;align-items:center}
-.hero-content{text-align:left}
-.hero-tag{font-size:.8rem;font-weight:600;color:var(--color-primary-dark);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;display:inline-block;background:rgba(37,211,102,.1);padding:.3rem .75rem;border-radius:999px}
-.hero h1{font-size:clamp(1.875rem,5vw,2.75rem);font-weight:700;line-height:1.15;margin-bottom:1rem;color:var(--color-accent)}
-.hero-subtitle{font-size:1.1rem;color:var(--color-text-muted);line-height:1.5;margin-bottom:2rem;max-width:540px}
-.hero-image{border-radius:var(--border-radius-lg);overflow:hidden;aspect-ratio:4/3}
-.hero-image img{width:100%;height:100%;object-fit:cover}
-@media(min-width:768px){.hero-grid{grid-template-columns:1fr 1fr;gap:3rem}.hero{padding:6rem 0 6rem}}
+section.hero{padding:88px 0 100px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-15%;top:-25%;width:55%;height:85%;background:radial-gradient(closest-side,rgba(201,169,97,0.18),transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+.hero .eyebrow{margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--navy-2);position:relative;display:inline-block}
+.hero h1 em::after{content:"";position:absolute;left:-2%;right:-2%;bottom:0.06em;height:0.18em;background:var(--gold);opacity:0.55;z-index:-1;border-radius:2px}
+.hero .lead{margin:26px 0 32px;max-width:540px;color:var(--body)}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero .btn-microcopy{font-size:13px;color:var(--body-2);margin-top:14px}
+.hero .trust-row{display:flex;gap:32px;margin-top:44px;padding-top:30px;border-top:1px solid var(--line);max-width:580px;flex-wrap:wrap}
+.hero .trust-row .t{display:flex;flex-direction:column;gap:4px}
+.hero .trust-row .t b{font-family:var(--display);font-weight:700;color:var(--navy);font-size:24px;line-height:1;letter-spacing:-0.02em}
+.hero .trust-row .t span{font-size:12.5px;color:var(--body-2);letter-spacing:0.01em}
+.hero-visual{position:relative;height:560px;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -28px rgba(15,37,69,0.22)}
+.hero-visual img{width:100%;height:100%;object-fit:cover}
+.hero-visual .badge{position:absolute;left:18px;bottom:18px;background:#fff;border-radius:var(--r);padding:14px 18px;box-shadow:0 26px 50px -22px rgba(15,37,69,0.28);display:flex;align-items:center;gap:12px;border:1px solid var(--line);max-width:78%}
+.hero-visual .badge .wa-ico{width:40px;height:40px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-visual .badge .wa-ico svg{width:20px;height:20px;fill:#fff}
+.hero-visual .badge b{font-size:13.5px;color:var(--navy);display:block;font-weight:600;font-family:var(--display)}
+.hero-visual .badge span{font-size:11.5px;color:var(--body-2)}
 
-/* PROBLEMAS — Fondo oscuro = seriedad y urgencia */
-.problemas{background:var(--color-brand-dark)}
-.problemas h2{text-align:center;color:var(--color-text-on-dark)}
-.problemas-grid{display:grid;gap:1rem;max-width:900px;margin:0 auto}
-@media(min-width:640px){.problemas-grid{gap:1.5rem}}
-.problema-card{display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.08);padding:1.25rem 1.5rem;border-radius:var(--border-radius);border:1px solid rgba(255,255,255,0.1)}
-.problema-icon{font-size:1.25rem;flex-shrink:0;margin-top:.15rem}
-.problema-card strong{display:block;margin-bottom:.25rem;color:var(--color-text-on-dark);font-size:.95rem}
-.problema-card p{color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.5}
-@media(min-width:640px){.problemas-grid{grid-template-columns:repeat(2,1fr)}}
+/* PAIN */
+section.pain{background:var(--navy);color:#e9eef7;padding:88px 0;position:relative;overflow:hidden}
+section.pain::before{content:"";position:absolute;left:-15%;top:-20%;width:60%;height:120%;background:radial-gradient(closest-side,rgba(201,169,97,0.14),transparent 70%);pointer-events:none}
+.pain-head{max-width:760px;position:relative;margin-bottom:44px}
+section.pain h2{color:#fff;margin-top:14px}
+section.pain .lead{color:rgba(255,255,255,0.78);margin-top:20px;font-size:17px;max-width:680px}
+.pain-bullets{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.pain-bullet{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r);padding:22px 20px;display:flex;flex-direction:column;gap:10px;transition:background .25s ease,border-color .25s ease,transform .2s ease}
+.pain-bullet:hover{background:rgba(255,255,255,0.06);border-color:rgba(201,169,97,0.4);transform:translateY(-2px)}
+.pain-bullet .ico{width:36px;height:36px;border-radius:10px;background:rgba(201,169,97,0.14);color:var(--gold);display:flex;align-items:center;justify-content:center}
+.pain-bullet .ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.pain-bullet b{font-family:var(--display);color:#fff;font-size:15px;font-weight:600;line-height:1.3}
+.pain-bullet span{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.55}
 
-/* SERVICIOS — Fondo blanco, cards con tinte azul */
-.servicios{text-align:center;background:var(--color-bg)}
-.servicios-grid{display:grid;gap:1.5rem}
-@media(min-width:640px){.servicios-grid{gap:2rem}}
-.servicio-card{background:var(--color-brand-ice);border-radius:var(--border-radius-lg);border:1px solid rgba(27,42,74,0.1);text-align:center;transition:box-shadow .2s;overflow:hidden}
-.servicio-card:hover{box-shadow:var(--shadow)}
-.servicio-card-img{width:100%;height:220px;object-fit:cover}
-.servicio-card-body{padding:1.5rem}
-.servicio-card-body-noimg{padding:2.5rem 1.5rem 1.5rem}
-.servicio-icon{font-size:2.5rem;display:block;margin-bottom:1rem}
-.servicio-card p{color:var(--color-text-muted);font-size:.95rem;line-height:1.5}
-@media(min-width:640px){.servicios-grid{grid-template-columns:repeat(3,1fr)}}
+/* SERVICES */
+section.services{padding:100px 0;background:var(--paper)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:48px;flex-wrap:wrap}
+.section-head .left{max-width:680px}
+.section-head .left .eyebrow{margin-bottom:18px}
+.section-head .left p{margin-top:18px;font-size:16.5px;color:var(--body);max-width:580px;line-height:1.65}
+.svc-featured{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.svc-feat{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .3s ease,border-color .25s ease;position:relative;text-decoration:none;color:inherit}
+.svc-feat:hover{transform:translateY(-4px);box-shadow:0 36px 60px -32px rgba(15,37,69,0.22);border-color:var(--line-2)}
+.svc-feat .visual{height:200px;position:relative;overflow:hidden;background:#0F2545}
+.svc-feat .visual img{width:100%;height:100%;object-fit:cover}
+.svc-feat .visual .tag{position:absolute;left:20px;top:20px;background:rgba(255,255,255,0.95);color:var(--navy);font-family:var(--display);font-size:10.5px;padding:6px 12px;border-radius:999px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.4);font-weight:600;z-index:2}
+.svc-feat .body{padding:28px;display:flex;flex-direction:column;gap:16px;flex:1}
+.svc-feat h3{margin:0}
+.svc-feat .desc{font-size:15px;color:var(--body);line-height:1.6}
+.svc-feat ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.svc-feat ul li{font-size:13.5px;color:var(--navy-2);padding-left:18px;position:relative;line-height:1.5;font-weight:500}
+.svc-feat ul li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;background:var(--gold);border-radius:50%}
+.svc-feat .cta-row{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.svc-secondary{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.svc-sec{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;gap:22px;align-items:start;transition:transform .2s ease,border-color .2s ease;text-decoration:none;color:inherit}
+.svc-sec:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.svc-sec .ico-sm{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--paper-2),var(--paper-3));color:var(--navy);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.svc-sec .ico-sm svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6}
+.svc-sec .content{flex:1;display:flex;flex-direction:column;gap:10px}
+.svc-sec h3{font-size:21px}
+.svc-sec .desc{font-size:14px;color:var(--body);line-height:1.55}
+.svc-sec .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.svc-sec .chip{background:var(--paper-2);border:1px solid var(--line);padding:5px 11px;border-radius:999px;font-size:11.5px;color:var(--navy);font-weight:500}
+.svc-sec .cta-bottom{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
 
-/* CONFIANZA — Fondo oscuro = experiencia y solidez */
-.confianza{background:var(--color-brand-dark);text-align:center}
-.confianza h2{color:var(--color-text-on-dark)}
-.confianza-grid{display:grid;gap:1.25rem;max-width:900px;margin:0 auto 2.5rem;text-align:left}
-.confianza-item{background:rgba(255,255,255,0.08);padding:1.25rem 1.5rem;border-radius:var(--border-radius);border:1px solid rgba(255,255,255,0.1)}
-.confianza-item strong{display:block;margin-bottom:.25rem;color:var(--color-accent-warm);font-size:1rem}
-.confianza-item p{color:rgba(255,255,255,.75);font-size:.9rem}
-@media(min-width:640px){.confianza-grid{grid-template-columns:repeat(2,1fr)}}
-.stats-row{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin:2rem 0}
-.stat{text-align:center}
-.stat strong{display:block;font-size:2rem;color:var(--color-accent-warm);line-height:1.2}
-.stat span{font-size:.875rem;color:rgba(255,255,255,.75)}
-.testimonios-header{text-align:center;margin-bottom:2rem}
-.testimonios-score{display:inline-flex;align-items:center;gap:.75rem;background:rgba(255,255,255,0.1);padding:.75rem 1.5rem;border-radius:999px;border:1px solid rgba(255,255,255,0.15)}
-.testimonios-score .score-num{font-size:1.5rem;font-weight:700;color:#fff}
-.testimonios-score .stars{color:#FBBF24;font-size:1.1rem;letter-spacing:2px}
-.testimonios-score .score-label{font-size:.8rem;color:rgba(255,255,255,.6)}
-.testimonios{display:grid;gap:1rem;max-width:900px;margin:0 auto}
-.testimonio{background:rgba(255,255,255,0.08);padding:1.25rem 1.5rem;border-radius:var(--border-radius);border:1px solid rgba(255,255,255,0.1);text-align:left}
-.testimonio-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
-.testimonio-author{display:flex;flex-direction:column}
-.testimonio-name{font-size:.9rem;font-weight:600;color:#fff}
-.testimonio-zone{font-size:.8rem;color:rgba(255,255,255,.5)}
-.testimonio-stars{color:#FBBF24;font-size:.85rem;letter-spacing:1px}
-.testimonio-text{font-size:.9rem;line-height:1.6;color:rgba(255,255,255,.85)}
-.testimonio-time{font-size:.75rem;color:rgba(255,255,255,.35);margin-top:.5rem}
-@media(min-width:640px){.testimonios{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:900px){.testimonios{grid-template-columns:repeat(3,1fr)}}
+/* HOW */
+section.how{padding:100px 0;background:var(--paper-2);position:relative;overflow:hidden}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px;position:relative}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 22px;display:flex;flex-direction:column;gap:14px;position:relative}
+.step .num{font-family:var(--display);font-weight:800;font-size:42px;color:var(--gold);line-height:1;letter-spacing:-0.04em}
+.step h4{color:var(--navy);font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-0.015em}
+.step p{font-size:13.5px;color:var(--body);line-height:1.55}
+.step .arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:14px;font-weight:bold;z-index:2;background:var(--paper-2);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
+.step:last-child .arrow{display:none}
 
-/* CÓMO FUNCIONA — Tinte azul claro = transparencia */
-.como-funciona{text-align:center;background:var(--color-brand-ice)}
-.pasos{display:grid;gap:1.5rem;max-width:900px;margin:0 auto}
-.paso{padding:2rem 1.5rem;text-align:center}
-.paso-num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--color-accent);color:#fff;font-weight:700;font-size:1.25rem;margin-bottom:1rem}
-.paso p{color:var(--color-text-muted);font-size:.95rem}
-@media(min-width:640px){.pasos{grid-template-columns:repeat(3,1fr)}}
+/* WHY + TESTIMONIOS */
+section.why{padding:100px 0;background:var(--paper)}
+.why-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:start}
+.why-visual{background:linear-gradient(135deg,var(--navy),var(--navy-2));border-radius:var(--r-lg);padding:44px;color:#fff;position:relative;overflow:hidden;min-height:480px;display:flex;flex-direction:column;justify-content:space-between}
+.why-visual::before{content:"";position:absolute;right:-30%;top:-30%;width:80%;height:80%;background:radial-gradient(closest-side,rgba(201,169,97,0.25),transparent 70%)}
+.why-visual .quote-big{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.25;color:#fff;position:relative;letter-spacing:-0.022em;margin-top:24px}
+.why-visual .quote-big .gold{color:var(--gold-soft)}
+.why-stats{display:flex;gap:18px;margin-top:28px;position:relative;flex-wrap:wrap}
+.why-stats .stat{flex:1;min-width:120px}
+.why-stats .stat b{display:block;font-family:var(--display);font-weight:800;font-size:30px;color:var(--gold-soft);line-height:1;letter-spacing:-0.02em}
+.why-stats .stat span{display:block;font-size:12px;color:rgba(255,255,255,0.7);margin-top:6px;letter-spacing:0.02em}
+.why-visual .quote-attrib{margin-top:auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;gap:12px;position:relative}
+.why-visual .quote-attrib .score{display:flex;flex-direction:column}
+.why-visual .quote-attrib .score b{font-size:18px;color:#fff;font-family:var(--display);font-weight:700}
+.why-visual .quote-attrib .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+.why-visual .quote-attrib .small{font-size:11.5px;color:rgba(255,255,255,0.65);margin-top:3px}
+.why-points{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.why-point{display:flex;gap:14px;align-items:start;padding:18px 0;border-top:1px solid var(--line)}
+.why-point .check{width:32px;height:32px;border-radius:50%;background:rgba(201,169,97,0.15);color:var(--gold-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-point .check svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5}
+.why-point b{font-family:var(--display);font-size:15px;color:var(--navy);display:block;font-weight:600;margin-bottom:3px;letter-spacing:-0.01em}
+.why-point span{font-size:13.5px;color:var(--body);line-height:1.55}
 
-/* COBERTURA — Blanco limpio = alcance y claridad */
-.cobertura{background:var(--color-bg);text-align:center}
-.cobertura>.container>p{color:var(--color-text-muted)}
-.zonas-list{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:1.5rem auto;justify-content:center;max-width:800px}
-.zonas-list li{background:var(--color-brand-ice);border:1px solid var(--color-accent);padding:.4rem .9rem;border-radius:999px;font-size:.875rem;color:var(--color-accent)}
-.cobertura-nota{margin-top:1rem;font-size:.9rem;color:var(--color-text-muted)}
+/* TESTIMONIOS */
+section.testimonios{padding:80px 0;background:var(--paper-2)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.testi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:12px}
+.testi-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--navy);font-family:var(--display);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+.testi-name{font-family:var(--display);font-weight:600;color:var(--navy);font-size:14px;line-height:1}
+.testi-zone{font-size:11.5px;color:var(--body-2);margin-top:3px;display:block}
+.testi-stars{color:var(--gold);letter-spacing:1.5px;font-size:13px}
+.testi-text{font-size:14px;color:var(--body);line-height:1.6}
+.testi-time{font-size:11px;color:var(--muted);font-family:var(--display);letter-spacing:0.04em}
 
-/* CTA FINAL */
-.cta-final{background:#0C1829;color:var(--color-text-on-dark);text-align:center;padding:6rem 0}
-.cta-final h2{color:var(--color-text-on-dark);max-width:700px;margin-left:auto;margin-right:auto}
-.cta-final p{color:rgba(255,255,255,.8);font-size:1.1rem;max-width:550px;margin:0 auto 2rem}
-.cta-logo{height:60px;width:auto;margin:0 auto 2rem;opacity:.9}
+/* CASES */
+section.cases{padding:100px 0;background:var(--paper)}
+.case-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;text-decoration:none;color:inherit}
+.case-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 18px 32px -20px rgba(15,37,69,0.16)}
+.case-card .ico-mini{width:36px;height:36px;border-radius:10px;background:var(--paper-2);color:var(--navy);display:flex;align-items:center;justify-content:center}
+.case-card .ico-mini svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.case-card .q{font-family:var(--display);font-weight:600;font-size:15.5px;color:var(--navy);line-height:1.35;letter-spacing:-0.015em}
+.case-card .arrow{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--navy);font-weight:600;letter-spacing:0.02em;font-family:var(--display)}
+.case-card .arrow svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ZONES */
+section.zones{padding:100px 0;background:var(--paper-2)}
+.zones-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.zones-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.zone-chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:13px 18px;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--navy);font-weight:500;font-family:var(--display)}
+.zone-chip .pin{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.zones-disclaimer{margin-top:20px;padding:14px 18px;background:rgba(201,169,97,0.08);border:1px solid rgba(201,169,97,0.25);border-radius:var(--r-sm);font-size:13px;color:var(--navy-2);line-height:1.5}
+.map-art{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;position:relative;overflow:hidden;min-height:380px}
+.map-art .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(15,37,69,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(15,37,69,0.05) 1px,transparent 1px);background-size:32px 32px}
+.map-art svg{position:relative;width:100%;height:100%;display:block}
+
+/* FAQ */
+section.faq{padding:100px 0;background:var(--paper)}
+.faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:56px}
+details.faq-item{border-top:1px solid var(--line);padding:20px 0}
+details.faq-item:last-child{border-bottom:1px solid var(--line)}
+details.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;font-family:var(--display);font-weight:600;font-size:17px;color:var(--navy);line-height:1.35;letter-spacing:-0.015em;cursor:pointer}
+details.faq-item summary::-webkit-details-marker{display:none}
+details.faq-item summary .plus{width:28px;height:28px;border-radius:50%;background:var(--paper-2);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:transform .25s ease,background .2s ease;font-weight:400}
+details.faq-item[open] summary .plus{transform:rotate(45deg);background:var(--gold);color:#fff}
+details.faq-item p{margin:14px 0 0;font-size:14.5px;color:var(--body);line-height:1.65;padding-right:32px}
+
+/* FINAL CTA */
+section.final-cta{padding:110px 0;background:var(--navy);color:#fff;text-align:center;position:relative;overflow:hidden}
+section.final-cta::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:85%;height:140%;background:radial-gradient(closest-side,rgba(201,169,97,0.18),transparent 70%)}
+.final-cta-inner{position:relative;max-width:780px;margin:0 auto;padding:0 24px}
+.final-cta-logo{height:64px;width:auto;margin:0 auto 22px;opacity:.95}
+.final-cta h2{color:#fff;font-size:clamp(34px,4.5vw,56px)}
+.final-cta p{font-size:18px;color:rgba(255,255,255,0.78);margin:22px auto 32px;max-width:520px;line-height:1.6}
+.final-cta .btn-wa{font-size:16px;padding:18px 32px}
+.final-cta .small{margin-top:22px;font-size:12.5px;color:rgba(255,255,255,0.5);letter-spacing:0.04em}
 
 /* FOOTER */
-footer{background:#0C1829;color:rgba(255,255,255,.6);text-align:center;padding:2rem 0;font-size:.875rem}
-.footer-logo{height:50px;width:auto;margin:0 auto 1rem}
-.footer-location{margin-bottom:.75rem}
-.footer-legal{margin-bottom:.5rem}
-.footer-legal a{color:rgba(255,255,255,.75);text-decoration:underline}
-.footer-legal a:hover{color:#fff}
-.footer-copy{font-size:.8rem;color:rgba(255,255,255,.35)}
+footer.site{padding:64px 0 28px;background:#0a1830;color:rgba(255,255,255,0.7);font-size:14px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:42px}
+.footer-brand{display:flex;flex-direction:column;gap:18px;max-width:340px}
+.footer-brand .mark-wrap{display:flex;align-items:center;gap:14px}
+.footer-brand .mark-wrap img{width:54px;height:auto}
+.footer-brand .mark-wrap .wm-1{font-family:var(--display);font-weight:700;font-size:21px;color:#fff;line-height:1;letter-spacing:-0.02em}
+.footer-brand .mark-wrap .wm-2{font-family:var(--display);font-weight:600;font-size:9.5px;letter-spacing:0.24em;color:rgba(255,255,255,0.6);margin-top:4px;display:block}
+.footer-brand p{margin:0;color:rgba(255,255,255,0.6);font-size:13.5px;line-height:1.6}
+footer.site h5{font-family:var(--display);color:#fff;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;margin:0 0 16px;font-weight:600}
+footer.site ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+footer.site ul li a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13.5px}
+footer.site ul li a:hover{color:var(--gold-soft)}
+.footer-bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.04em}
 
-/* ANIMACIONES */
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
-.fade-in.visible{opacity:1;transform:translateY(0)}
+/* FLOATING WA */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:80;background:var(--wa);color:#fff;border-radius:999px;padding:14px 22px 14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 14px 28px -12px rgba(18,140,126,0.55);text-decoration:none;font-weight:600;font-size:14px;font-family:var(--display);transition:opacity .3s,transform .2s ease,box-shadow .2s ease}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 22px 36px -14px rgba(18,140,126,0.7)}
+.wa-float svg{width:24px;height:24px;fill:#fff}
+.wa-float.hidden{opacity:0;pointer-events:none}
 
-/* MOBILE */
-@media(max-width:767px){
-  section{padding:4rem 0}
-  .hero{padding:4rem 0 3.5rem}
-  .hero-content{text-align:center}
-  .hero-subtitle{margin-left:auto;margin-right:auto}
-  .btn-whatsapp.btn-lg{width:100%;justify-content:center;margin-left:0;margin-right:0}
-  .stat strong{font-size:1.5rem}
-  .header-logo img{height:34px;width:34px}
-  .header-logo-text{font-size:1rem}
-  .header-logo-sub{font-size:.55rem}
-  .hero-image{aspect-ratio:16/9}
-  .servicios-grid{grid-template-columns:1fr}
-  .problemas-grid{grid-template-columns:1fr}
-  .confianza-grid{grid-template-columns:1fr}
-  .testimonios{grid-template-columns:1fr}
-  .pasos{grid-template-columns:1fr}
+/* RESPONSIVE */
+@media (max-width:1100px){
+  .pain-bullets{grid-template-columns:repeat(2,1fr)}
+  .case-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:400px){
-  :root{--container-padding:1rem}
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-visual{height:380px}
+  .why-grid,.zones-grid,.faq-grid{grid-template-columns:1fr;gap:36px}
+  .svc-featured,.svc-secondary{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:repeat(2,1fr)}
+  .step .arrow{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:767px){
+  .container{padding:0 20px}
+  nav.links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);flex-direction:column;padding:18px 20px 22px;gap:0;border-top:1px solid var(--line);box-shadow:0 12px 28px rgba(15,37,69,0.12)}
+  nav.links.open{display:flex}
+  nav.links a{padding:14px 0;border-bottom:1px solid var(--line);width:100%;font-size:15px}
+  nav.links a:last-of-type{border-bottom:none}
+  nav.links a:after{display:none}
+  .menu-toggle{display:block}
+  .nav-cta-desktop{display:none}
+  .hero{padding:48px 0 64px}
+  .hero h1 br{display:none}
+  .pain-bullets{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr}
+  .why-points{grid-template-columns:1fr}
+  .zones-list{grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  section.pain,section.services,section.how,section.why,section.zones,section.cases,section.faq,section.testimonios{padding:64px 0}
+  section.final-cta{padding:72px 0}
+  .wa-float span{display:none}
+  .wa-float{padding:14px;border-radius:50%}
+  .svc-feat .body{padding:22px}
+  .svc-feat ul{grid-template-columns:1fr}
+  .svc-sec{flex-direction:column;padding:22px}
+  .hero-visual .badge{padding:12px 14px;max-width:88%}
+  .brand .wordmark{display:none}
+  .brand img.brand-logo{height:42px}
 }
   </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#inicio" class="header-logo">
-        <img src="Logo%20Blanco.webp" alt="Núcleo Hogar">
-        <span class="header-logo-text">Núcleo Hogar<span class="header-logo-sub">Cuidamos lo que más amas</span></span>
+<!-- SHARED SVG ICONS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ico-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="ico-bolt" viewBox="0 0 24 24"><path d="M13 2 L4 14 L11 14 L11 22 L20 10 L13 10 Z" stroke-linejoin="round"/></symbol>
+    <symbol id="ico-snow" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19" stroke-linecap="round"/></symbol>
+    <symbol id="ico-drop" viewBox="0 0 24 24"><path d="M12 2 C 12 2, 4 12, 4 16 a8 8 0 0 0 16 0 C 20 12, 12 2, 12 2 Z" stroke-linejoin="round"/></symbol>
+    <symbol id="ico-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 1 6 6L19 14l-9 9-3-3 9-9 1.7-1.7Z M5 19l3 3" stroke-linejoin="round"/></symbol>
+    <symbol id="ico-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ico-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ico-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 1 1-3-6.2L21 4l-1 4.2A8 8 0 0 1 21 12Z" stroke-linejoin="round"/></symbol>
+    <symbol id="ico-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></symbol>
+    <symbol id="ico-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v7c0 5 4 9 8 10 4-1 8-5 8-10V5l-8-3Z M9 12l2 2 4-4" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="ico-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v10a2 2 0 0 1-2 2h-3v-7H8v7H5a2 2 0 0 1-2-2V11Z" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- HEADER -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#inicio" class="brand">
+      <img src="Logo%20Azul.webp" alt="Núcleo Hogar — Cuidamos lo que más amas" class="brand-logo">
+      <div class="wordmark">
+        <span class="wm-1">Núcleo Hogar</span>
+        <span class="wm-2">MONTERREY · MX</span>
+      </div>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" onclick="document.querySelector('nav.links').classList.toggle('open')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#zonas">Zonas</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="btn btn-wa nav-cta-desktop" target="_blank" rel="noopener">
+      <svg class="ico-wa"><use href="#ico-wa"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Monterrey y área metropolitana</div>
+      <h1>Servicios confiables para <em>resolver pendientes</em> de tu hogar.</h1>
+      <p class="lead">Electricidad residencial, minisplit y plomería para casas y departamentos en Monterrey. Técnicos puntuales, trabajo limpio y precio claro — todo coordinado por WhatsApp.</p>
+      <div class="ctas">
+        <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="btn btn-wa" target="_blank" rel="noopener">
+          <svg class="ico-wa"><use href="#ico-wa"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+      </div>
+      <p class="btn-microcopy">Respuesta rápida · Sin compromiso</p>
+      <div class="trust-row">
+        <div class="t"><b>200+</b><span>hogares atendidos</span></div>
+        <div class="t"><b>4.9 ★</b><span>en reseñas reales</span></div>
+        <div class="t"><b>30 días</b><span>de garantía por escrito</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="Hero.webp" alt="Técnico de Núcleo Hogar evaluando un hogar en Monterrey" width="600" height="560">
+      <div class="badge">
+        <div class="wa-ico"><svg><use href="#ico-wa"/></svg></div>
+        <div>
+          <b>Te contestamos hoy</b>
+          <span>Lun–Sáb · 8:00 a 20:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="container">
+    <div class="pain-head">
+      <div class="eyebrow gold"><span class="dot"></span>Lo entendemos</div>
+      <h2>Encontrar a alguien confiable para trabajos de casa no debería ser una batalla.</h2>
+      <p class="lead">Sabemos lo frustrante que es esperar a un técnico que no llega, no entender qué está fallando o no tener claridad sobre el costo. En Núcleo Hogar el proceso es claro, ordenado y confiable desde el primer mensaje.</p>
+    </div>
+    <div class="pain-bullets">
+      <div class="pain-bullet">
+        <div class="ico"><svg><use href="#ico-clock"/></svg></div>
+        <b>Llegamos cuando decimos</b>
+        <span>Confirmamos hora exacta y la respetamos. Si hay algún cambio, avisamos antes.</span>
+      </div>
+      <div class="pain-bullet">
+        <div class="ico"><svg><use href="#ico-chat"/></svg></div>
+        <b>Comunicación clara</b>
+        <span>Lenguaje normal, sin tecnicismos. Sabes qué pasa, qué cuesta y qué sigue.</span>
+      </div>
+      <div class="pain-bullet">
+        <div class="ico"><svg><use href="#ico-shield"/></svg></div>
+        <b>Técnicos confiables</b>
+        <span>Personal identificado, presentable y con experiencia residencial.</span>
+      </div>
+      <div class="pain-bullet">
+        <div class="ico"><svg><use href="#ico-home"/></svg></div>
+        <b>Cuidado de tu hogar</b>
+        <span>Áreas protegidas mientras trabajamos y limpieza al cerrar.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <div class="eyebrow"><span class="dot"></span>Nuestros servicios</div>
+        <h2>Lo que mejor sabemos hacer en tu casa o departamento.</h2>
+        <p>Nuestro fuerte es <strong>electricidad residencial</strong> y <strong>minisplit</strong>. También resolvemos <strong>plomería</strong> y pendientes generales del hogar — todo en una sola conversación por WhatsApp.</p>
+      </div>
+      <a href="https://wa.me/528139078447?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20sus%20servicios" class="btn-link" target="_blank" rel="noopener">Hablar con un técnico <svg class="ico-arrow"><use href="#ico-arrow"/></svg></a>
+    </div>
+
+    <div class="svc-featured">
+      <a href="/electricista-monterrey/" class="svc-feat">
+        <div class="visual">
+          <span class="tag">★ Servicio principal</span>
+          <img src="Servicio%20Electrico.webp" alt="Técnico realizando servicio eléctrico residencial en Monterrey">
+        </div>
+        <div class="body">
+          <h3>Electricidad residencial</h3>
+          <p class="desc">Instalaciones, reparaciones, cortos, apagones parciales y revisiones preventivas. Trabajo seguro y a la primera.</p>
+          <ul>
+            <li>Contactos</li>
+            <li>Apagadores</li>
+            <li>Luminarias</li>
+            <li>Tableros</li>
+            <li>Cortos</li>
+            <li>Revisiones</li>
+          </ul>
+          <div class="cta-row">
+            <span class="btn-link">Ver detalles <svg class="ico-arrow"><use href="#ico-arrow"/></svg></span>
+          </div>
+        </div>
       </a>
-      <button class="menu-toggle" aria-label="Abrir menú" onclick="document.querySelector('.header-nav').classList.toggle('open');this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true')">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-      <nav class="header-nav">
-        <a href="#servicios">Servicios</a>
-        <a href="#confianza">¿Por qué elegirnos?</a>
-        <a href="#proceso">Cómo funciona</a>
-        <a href="#cobertura">Cobertura</a>
-        <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="header-cta" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Escríbenos
-        </a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero" id="inicio">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <span class="hero-tag">Monterrey y área metropolitana</span>
-          <h1>Electricista, Minisplit y Plomero en Monterrey — Técnicos que llegan cuando dicen</h1>
-          <p class="hero-subtitle">¿Cansado de técnicos que no llegan o dejan el trabajo a medias? Nosotros le damos precio claro, trabajo limpio y puntualidad desde el primer contacto.</p>
-          <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="btn-whatsapp btn-lg" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Escribir por WhatsApp
-          </a>
-          <p class="btn-microcopy">Respuesta rápida · Sin compromiso</p>
+      <a href="/minisplit-monterrey/" class="svc-feat">
+        <div class="visual">
+          <span class="tag">★ Servicio principal</span>
+          <img src="Tecnico%20con%20minisplit.webp" alt="Técnico de Núcleo Hogar dando mantenimiento a un minisplit">
         </div>
-        <div class="hero-image">
-          <img src="Hero.webp" alt="Técnico de Núcleo Hogar evaluando un hogar en Monterrey">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="problemas" id="problemas">
-    <div class="container">
-      <h2>Sabemos lo que está cansado de vivir</h2>
-      <div class="problemas-grid">
-        <div class="problema-card"><span class="problema-icon">&#10060;</span><div><strong>Le dijeron que llegaban a las 9 y aparecieron a las 3</strong><p>Perdió medio día esperando, canceló compromisos, y ni siquiera le avisaron del retraso.</p></div></div>
-        <div class="problema-card"><span class="problema-icon">&#10060;</span><div><strong>El trabajo quedó "listo" pero a la semana volvió el problema</strong><p>Y cuando les marcó para reclamar, nadie le contestó. Terminó pagando doble.</p></div></div>
-        <div class="problema-card"><span class="problema-icon">&#10060;</span><div><strong>Le dejaron la casa sucia y desordenada</strong><p>Cables sueltos, manchas en la pared, herramienta olvidada. Y el técnico ya no volvió.</p></div></div>
-        <div class="problema-card"><span class="problema-icon">&#10060;</span><div><strong>No sabía quién estaba entrando a su casa</strong><p>Sin identificación, sin referencias, sin garantía. Solo la esperanza de que hiciera bien su trabajo.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="servicios" id="servicios">
-    <div class="container">
-      <h2>Servicios de electricidad, minisplit y plomería en Monterrey</h2>
-      <div class="servicios-grid">
-        <a href="/electricista-monterrey/" class="servicio-card">
-          <img src="Servicio%20Electrico.webp" alt="Técnico realizando servicio eléctrico" class="servicio-card-img">
-          <div class="servicio-card-body"><h3>Electricidad residencial</h3><p>Instalaciones, reparaciones, cortos, apagones parciales y revisiones preventivas. Trabajo seguro y a la primera.</p></div>
-        </a>
-        <a href="/minisplit-monterrey/" class="servicio-card">
-          <img src="Tecnico%20con%20minisplit.webp" alt="Técnico realizando mantenimiento de minisplit" class="servicio-card-img">
-          <div class="servicio-card-body"><h3>Minisplit: instalación y mantenimiento</h3><p>Instalación, lavado profundo, recarga de gas y revisión de funcionamiento. Su minisplit enfriando como nuevo.</p></div>
-        </a>
-        <a href="/plomeria-monterrey/" class="servicio-card">
-          <img src="Plomeria.webp" alt="Técnico realizando servicio de plomería" class="servicio-card-img">
-          <div class="servicio-card-body"><h3>Plomería</h3><p>Fugas, destapes, cambio de llaves, instalación de accesorios y reparaciones generales. Soluciones que duran.</p></div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="confianza" id="confianza">
-    <div class="container">
-      <h2>Por qué las familias en Monterrey nos eligen</h2>
-      <div class="confianza-grid">
-        <div class="confianza-item"><strong>Llegamos cuando decimos</strong><p>Le confirmamos hora exacta y la respetamos. Si hay algún cambio, le avisamos antes.</p></div>
-        <div class="confianza-item"><strong>Presupuesto claro desde el inicio</strong><p>Le decimos cuánto cuesta antes de empezar. Sin sorpresas al terminar.</p></div>
-        <div class="confianza-item"><strong>Trabajo limpio y ordenado</strong><p>Nos vamos y su casa queda igual o mejor que como la encontramos.</p></div>
-        <div class="confianza-item"><strong>Comunicación directa</strong><p>Le explicamos qué vamos a hacer, por qué y cuánto tarda. Sin tecnicismos ni rodeos.</p></div>
-      </div>
-      <div class="stats-row">
-        <div class="stat"><strong>200+</strong><span>Hogares atendidos</span></div>
-        <div class="stat"><strong>Monterrey</strong><span>y área metropolitana</span></div>
-        <div class="stat"><strong>30 días</strong><span>De garantía por escrito</span></div>
-      </div>
-      <div class="testimonios-header">
-        <div class="testimonios-score">
-          <span class="score-num">4.9</span>
-          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span class="score-label">Basado en reseñas de clientes</span>
-        </div>
-      </div>
-      <div class="testimonios">
-        <div class="testimonio">
-          <div class="testimonio-top">
-            <div class="testimonio-author"><span class="testimonio-name">María G.</span><span class="testimonio-zone">San Pedro Garza García</span></div>
-            <span class="testimonio-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <div class="body">
+          <h3>Minisplit: instalación y mantenimiento</h3>
+          <p class="desc">Instalación, lavado profundo, recarga de gas y revisión de funcionamiento. Su minisplit enfriando como nuevo.</p>
+          <ul>
+            <li>Instalación</li>
+            <li>Lavado profundo</li>
+            <li>Recarga de gas</li>
+            <li>No enfría</li>
+            <li>Tira agua</li>
+            <li>Mantenimiento</li>
+          </ul>
+          <div class="cta-row">
+            <span class="btn-link">Ver detalles <svg class="ico-arrow"><use href="#ico-arrow"/></svg></span>
           </div>
-          <p class="testimonio-text">Llegaron a la hora que dijeron, me explicaron todo antes de empezar y dejaron la casa impecable. Por fin un servicio en el que no tengo que estar encima.</p>
-          <span class="testimonio-time">Hace 2 semanas</span>
         </div>
-        <div class="testimonio">
-          <div class="testimonio-top">
-            <div class="testimonio-author"><span class="testimonio-name">Roberto L.</span><span class="testimonio-zone">Cumbres</span></div>
-            <span class="testimonio-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          </div>
-          <p class="testimonio-text">Llevaba dos semanas con un corto en la cocina. Lo diagnosticaron rápido y lo arreglaron ese mismo día. El precio fue exactamente lo que me cotizaron.</p>
-          <span class="testimonio-time">Hace 1 mes</span>
-        </div>
-        <div class="testimonio">
-          <div class="testimonio-top">
-            <div class="testimonio-author"><span class="testimonio-name">Laura T.</span><span class="testimonio-zone">Contry</span></div>
-            <span class="testimonio-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          </div>
-          <p class="testimonio-text">Les pedí lavado de 3 minisplits. Llegaron puntuales, protegieron los muebles y los dejaron funcionando como nuevos. Ya los agendé para el próximo semestre.</p>
-          <span class="testimonio-time">Hace 3 semanas</span>
-        </div>
-        <div class="testimonio">
-          <div class="testimonio-top">
-            <div class="testimonio-author"><span class="testimonio-name">Carlos M.</span><span class="testimonio-zone">Mitras Centro</span></div>
-            <span class="testimonio-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
-          </div>
-          <p class="testimonio-text">Buen trabajo con la fuga del baño. Tardaron un poco más de lo que pensé pero quedó bien y el precio fue justo. Los volvería a llamar.</p>
-          <span class="testimonio-time">Hace 1 mes</span>
-        </div>
-        <div class="testimonio">
-          <div class="testimonio-top">
-            <div class="testimonio-author"><span class="testimonio-name">Ana Sofía R.</span><span class="testimonio-zone">Valle de San Ángel</span></div>
-            <span class="testimonio-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          </div>
-          <p class="testimonio-text">Me instalaron dos minisplits en casa nueva. Todo perfecto, rápidos y ordenados. Lo que más me gustó es que me explicaron cómo darles mantenimiento.</p>
-          <span class="testimonio-time">Hace 5 días</span>
-        </div>
-        <div class="testimonio">
-          <div class="testimonio-top">
-            <div class="testimonio-author"><span class="testimonio-name">Jorge P.</span><span class="testimonio-zone">Cumbres Élite</span></div>
-            <span class="testimonio-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          </div>
-          <p class="testimonio-text">Tenía un apagón en media casa desde el viernes. Les escribí el sábado temprano, vinieron ese mismo día y quedó resuelto. Muy agradecido.</p>
-          <span class="testimonio-time">Hace 2 meses</span>
-        </div>
-      </div>
-      <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="btn-whatsapp" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Solicitar presupuesto
       </a>
-      <p class="btn-microcopy">Respondemos rápido · Sin compromiso</p>
     </div>
-  </section>
 
-  <section class="como-funciona" id="proceso">
-    <div class="container">
-      <h2>Así de fácil es empezar</h2>
-      <div class="pasos">
-        <div class="paso"><span class="paso-num">1</span><h3>Escríbanos por WhatsApp</h3><p>Cuéntenos qué necesita. Respondemos en minutos, no en días.</p></div>
-        <div class="paso"><span class="paso-num">2</span><h3>Recibe una cotización aproximada</h3><p>Le compartimos un estimado por mensaje para que sepa qué esperar, sin vueltas en vano.</p></div>
-        <div class="paso"><span class="paso-num">3</span><h3>Lo resolvemos</h3><p>Trabajo puntual, limpio y con garantía. Sin sorpresas en el precio final.</p></div>
+    <div class="svc-secondary">
+      <a href="/plomeria-monterrey/" class="svc-sec">
+        <div class="ico-sm"><svg><use href="#ico-drop"/></svg></div>
+        <div class="content">
+          <h3>Plomería</h3>
+          <p class="desc">Fugas, destapes, cambio de llaves, instalación de accesorios y reparaciones generales. Soluciones que duran.</p>
+          <div class="row">
+            <span class="chip">Fugas</span>
+            <span class="chip">Destapes</span>
+            <span class="chip">Llaves</span>
+            <span class="chip">WC</span>
+            <span class="chip">Lavabos</span>
+          </div>
+          <div class="cta-bottom">
+            <span class="btn-link">Ver detalles <svg class="ico-arrow"><use href="#ico-arrow"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://wa.me/528139078447?text=Hola%2C%20tengo%20varios%20pendientes%20en%20mi%20casa%20y%20quiero%20cotizar" class="svc-sec" target="_blank" rel="noopener">
+        <div class="ico-sm"><svg><use href="#ico-wrench"/></svg></div>
+        <div class="content">
+          <h3>Mantenimiento general</h3>
+          <p class="desc">Pequeños pendientes del hogar que necesitas resolver sin complicarte. Una visita, varias tareas.</p>
+          <div class="row">
+            <span class="chip">Accesorios</span>
+            <span class="chip">Ajustes</span>
+            <span class="chip">Reparaciones</span>
+            <span class="chip">Preventivo</span>
+            <span class="chip">Pendientes</span>
+          </div>
+          <div class="cta-bottom">
+            <span class="btn-link">Consultar por WhatsApp <svg class="ico-arrow"><use href="#ico-arrow"/></svg></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <div class="eyebrow"><span class="dot"></span>Así trabajamos</div>
+        <h2>Pedir un servicio debería ser simple. Lo es.</h2>
+        <p>Sin formularios largos, sin call center. Cuatro pasos, una sola conversación por WhatsApp.</p>
       </div>
     </div>
-  </section>
-
-  <section class="cobertura" id="cobertura">
-    <div class="container">
-      <h2>Electricista, plomero y mantenimiento de minisplit en Monterrey y alrededores</h2>
-      <p>Atendemos toda el área metropolitana de Monterrey:</p>
-      <ul class="zonas-list">
-        <li>Monterrey Centro</li><li>San Pedro Garza García</li><li>Apodaca</li><li>Guadalupe</li><li>San Nicolás de los Garza</li><li>Escobedo</li><li>Santa Catarina</li><li>Cumbres</li><li>Valle Oriente</li><li>Contry</li><li>Del Paseo Residencial</li><li>Mitras</li><li>Colinas de San Jerónimo</li><li>La Rioja</li>
-      </ul>
-      <p class="cobertura-nota">¿No ve su zona? Escríbanos por WhatsApp y lo confirmamos.</p>
+    <div class="how-grid">
+      <div class="step">
+        <div class="num">01</div>
+        <h4>Nos escribes por WhatsApp</h4>
+        <p>Cuéntanos qué pasa y manda foto si puedes. No necesitas saber el término técnico.</p>
+        <div class="arrow">→</div>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h4>Revisamos tu caso</h4>
+        <p>Un técnico lee tu mensaje y te hace dos o tres preguntas para entender el caso.</p>
+        <div class="arrow">→</div>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h4>Cotizamos y agendamos</h4>
+        <p>Te damos un rango de costo, te explicamos qué incluye y agendamos día y hora.</p>
+        <div class="arrow">→</div>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h4>Resolvemos y damos seguimiento</h4>
+        <p>El técnico realiza el servicio. Si surge algo después, seguimos en el mismo chat.</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta-final">
-    <div class="container">
-      <img src="Logo%20Blanco.webp" alt="Núcleo Hogar" class="cta-logo">
-      <h2>Cada día que espera, el problema puede crecer</h2>
-      <p>Escríbanos hoy y tenga una solución esta semana. Sin compromiso.</p>
-      <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="btn-whatsapp btn-lg btn-whatsapp-light" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Escribir por WhatsApp ahora
+<!-- WHY -->
+<section class="why">
+  <div class="container why-grid">
+    <div class="why-visual">
+      <div>
+        <div class="eyebrow light"><span class="dot"></span>Lo que nos diferencia</div>
+        <div class="quote-big">Cuidamos <span class="gold">lo que más amas</span>: tu casa, tu tiempo y tu tranquilidad.</div>
+        <div class="why-stats">
+          <div class="stat"><b>200+</b><span>Hogares atendidos</span></div>
+          <div class="stat"><b>30 días</b><span>De garantía por escrito</span></div>
+        </div>
+      </div>
+      <div class="quote-attrib">
+        <div class="score">
+          <b>4.9 <span class="stars">★★★★★</span></b>
+          <span class="small">Basado en reseñas reales de clientes</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Por qué confiar en Núcleo Hogar</div>
+      <h2 style="margin-top:14px">Hacemos lo que decimos. Decimos lo que hacemos.</h2>
+      <div class="why-points">
+        <div class="why-point"><div class="check"><svg><use href="#ico-check"/></svg></div><div><b>Llegamos cuando decimos</b><span>Hora exacta confirmada por escrito; aviso si hay cambios.</span></div></div>
+        <div class="why-point"><div class="check"><svg><use href="#ico-check"/></svg></div><div><b>Presupuesto claro</b><span>Te decimos cuánto cuesta antes de empezar. Sin sorpresas al cerrar.</span></div></div>
+        <div class="why-point"><div class="check"><svg><use href="#ico-check"/></svg></div><div><b>Trabajo limpio y ordenado</b><span>Tu casa queda igual o mejor que como la encontramos.</span></div></div>
+        <div class="why-point"><div class="check"><svg><use href="#ico-check"/></svg></div><div><b>Comunicación directa</b><span>Te explicamos qué vamos a hacer, por qué y cuánto tarda.</span></div></div>
+        <div class="why-point"><div class="check"><svg><use href="#ico-check"/></svg></div><div><b>Técnicos identificados</b><span>Personal con uniforme, experiencia residencial y referencias.</span></div></div>
+        <div class="why-point"><div class="check"><svg><use href="#ico-check"/></svg></div><div><b>Garantía por escrito</b><span>30 días de garantía sobre el trabajo realizado.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios" id="testimonios">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <div class="eyebrow"><span class="dot"></span>Reseñas de clientes</div>
+        <h2>Lo que dicen las familias que ya nos eligieron.</h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="testi-head">
+          <div class="testi-author">
+            <div class="testi-avatar">M</div>
+            <div><span class="testi-name">María G.</span><span class="testi-zone">San Pedro Garza García</span></div>
+          </div>
+          <span class="testi-stars">★★★★★</span>
+        </div>
+        <p class="testi-text">"Llegaron a la hora que dijeron, me explicaron todo antes de empezar y dejaron la casa impecable. Por fin un servicio en el que no tengo que estar encima."</p>
+        <span class="testi-time">Hace 2 semanas</span>
+      </div>
+      <div class="testi">
+        <div class="testi-head">
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div><span class="testi-name">Roberto L.</span><span class="testi-zone">Cumbres</span></div>
+          </div>
+          <span class="testi-stars">★★★★★</span>
+        </div>
+        <p class="testi-text">"Llevaba dos semanas con un corto en la cocina. Lo diagnosticaron rápido y lo arreglaron ese mismo día. El precio fue exactamente lo que me cotizaron."</p>
+        <span class="testi-time">Hace 1 mes</span>
+      </div>
+      <div class="testi">
+        <div class="testi-head">
+          <div class="testi-author">
+            <div class="testi-avatar">L</div>
+            <div><span class="testi-name">Laura T.</span><span class="testi-zone">Contry</span></div>
+          </div>
+          <span class="testi-stars">★★★★★</span>
+        </div>
+        <p class="testi-text">"Les pedí lavado de 3 minisplits. Llegaron puntuales, protegieron los muebles y los dejaron funcionando como nuevos. Ya los agendé para el próximo semestre."</p>
+        <span class="testi-time">Hace 3 semanas</span>
+      </div>
+      <div class="testi">
+        <div class="testi-head">
+          <div class="testi-author">
+            <div class="testi-avatar">C</div>
+            <div><span class="testi-name">Carlos M.</span><span class="testi-zone">Mitras Centro</span></div>
+          </div>
+          <span class="testi-stars">★★★★☆</span>
+        </div>
+        <p class="testi-text">"Buen trabajo con la fuga del baño. Tardaron un poco más de lo que pensé pero quedó bien y el precio fue justo. Los volvería a llamar."</p>
+        <span class="testi-time">Hace 1 mes</span>
+      </div>
+      <div class="testi">
+        <div class="testi-head">
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div><span class="testi-name">Ana Sofía R.</span><span class="testi-zone">Valle de San Ángel</span></div>
+          </div>
+          <span class="testi-stars">★★★★★</span>
+        </div>
+        <p class="testi-text">"Me instalaron dos minisplits en casa nueva. Todo perfecto, rápidos y ordenados. Lo que más me gustó es que me explicaron cómo darles mantenimiento."</p>
+        <span class="testi-time">Hace 5 días</span>
+      </div>
+      <div class="testi">
+        <div class="testi-head">
+          <div class="testi-author">
+            <div class="testi-avatar">J</div>
+            <div><span class="testi-name">Jorge P.</span><span class="testi-zone">Cumbres Élite</span></div>
+          </div>
+          <span class="testi-stars">★★★★★</span>
+        </div>
+        <p class="testi-text">"Tenía un apagón en media casa desde el viernes. Les escribí el sábado temprano, vinieron ese mismo día y quedó resuelto. Muy agradecido."</p>
+        <span class="testi-time">Hace 2 meses</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases">
+  <div class="container">
+    <div class="section-head">
+      <div class="left">
+        <div class="eyebrow"><span class="dot"></span>Casos frecuentes</div>
+        <h2>Esto es lo que más nos piden.</h2>
+        <p>Si reconoces alguno, probablemente ya tenemos la solución mapeada. Da click para iniciar la conversación con el caso pre-llenado.</p>
+      </div>
+    </div>
+    <div class="case-grid">
+      <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20mi%20minisplit%20no%20enfr%C3%ADa" target="_blank" rel="noopener">
+        <div class="ico-mini"><svg><use href="#ico-snow"/></svg></div>
+        <div class="q">"Mi minisplit no enfría"</div>
+        <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
       </a>
-      <p class="btn-microcopy btn-microcopy-light">Respuesta rápida · Sin compromiso</p>
+      <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20mi%20minisplit%20tira%20agua" target="_blank" rel="noopener">
+        <div class="ico-mini"><svg><use href="#ico-drop"/></svg></div>
+        <div class="q">"Mi minisplit tira agua"</div>
+        <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+      </a>
+      <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20quiero%20instalar%20una%20l%C3%A1mpara" target="_blank" rel="noopener">
+        <div class="ico-mini"><svg><use href="#ico-bolt"/></svg></div>
+        <div class="q">"Quiero instalar una lámpara"</div>
+        <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+      </a>
+      <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20se%20quem%C3%B3%20un%20contacto" target="_blank" rel="noopener">
+        <div class="ico-mini"><svg><use href="#ico-bolt"/></svg></div>
+        <div class="q">"Se quemó un contacto"</div>
+        <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+      </a>
+      <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20tengo%20una%20fuga%20en%20el%20lavabo" target="_blank" rel="noopener">
+        <div class="ico-mini"><svg><use href="#ico-drop"/></svg></div>
+        <div class="q">"Tengo una fuga en el lavabo"</div>
+        <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+      </a>
+      <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20quiero%20resolver%20varios%20pendientes" target="_blank" rel="noopener">
+        <div class="ico-mini"><svg><use href="#ico-wrench"/></svg></div>
+        <div class="q">"Quiero resolver varios pendientes"</div>
+        <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+      </a>
+      <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20necesito%20revisar%20una%20falla%20el%C3%A9ctrica" target="_blank" rel="noopener">
+        <div class="ico-mini"><svg><use href="#ico-bolt"/></svg></div>
+        <div class="q">"Tengo una falla eléctrica"</div>
+        <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+      </a>
+      <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20quiero%20dar%20mantenimiento%20al%20minisplit%20antes%20del%20calor" target="_blank" rel="noopener">
+        <div class="ico-mini"><svg><use href="#ico-snow"/></svg></div>
+        <div class="q">"Mantenimiento antes del calor"</div>
+        <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div class="container">
-      <img src="Logo%20Blanco.webp" alt="Núcleo Hogar — Cuidamos lo que más amas" class="footer-logo">
-      <p class="footer-location">Monterrey, Nuevo León y área metropolitana</p>
-      <p class="footer-legal"><a href="/aviso-de-privacidad/">Aviso de privacidad</a></p>
-      <p class="footer-copy">&copy; 2026 Núcleo Hogar. Todos los derechos reservados.</p>
+<!-- ZONES -->
+<section class="zones" id="zonas">
+  <div class="container zones-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Zonas de servicio</div>
+      <h2 style="margin-top:14px">Atendemos Monterrey y zona metropolitana.</h2>
+      <p style="margin:18px 0 0;color:var(--body);max-width:480px;line-height:1.65">Cubrimos las 8 ciudades del AMM. Si tu colonia no aparece, escríbenos y confirmamos disponibilidad de un técnico cerca.</p>
+      <div class="zones-list">
+        <div class="zone-chip"><span class="pin"></span>Monterrey</div>
+        <div class="zone-chip"><span class="pin"></span>San Pedro Garza García</div>
+        <div class="zone-chip"><span class="pin"></span>Guadalupe</div>
+        <div class="zone-chip"><span class="pin"></span>San Nicolás de los Garza</div>
+        <div class="zone-chip"><span class="pin"></span>Apodaca</div>
+        <div class="zone-chip"><span class="pin"></span>General Escobedo</div>
+        <div class="zone-chip"><span class="pin"></span>Santa Catarina</div>
+        <div class="zone-chip"><span class="pin"></span>García</div>
+      </div>
+      <div class="zones-disclaimer">Atendemos toda el área metropolitana <strong>según disponibilidad de agenda</strong>. Te confirmamos por WhatsApp antes de agendar.</div>
+      <div style="margin-top:22px">
+        <a href="https://wa.me/528139078447?text=Hola%2C%20mi%20zona%20es%20" class="btn btn-navy" target="_blank" rel="noopener">¿Atienden mi zona?</a>
+      </div>
     </div>
-  </footer>
+    <div class="map-art">
+      <div class="grid-bg"></div>
+      <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet">
+        <path d="M70 220 Q 90 120, 200 110 Q 320 90, 380 150 Q 440 200, 420 270 Q 380 360, 270 350 Q 140 360, 90 300 Q 50 270, 70 220 Z" fill="#EFEADD" stroke="#c8bfa9" stroke-dasharray="4 4"/>
+        <g font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#0F2545" font-weight="600">
+          <g transform="translate(230,210)"><circle r="14" fill="#0F2545"/><circle r="6" fill="#C9A961"/><text x="22" y="4">Monterrey</text></g>
+          <g transform="translate(330,180)"><circle r="9" fill="#0F2545"/><circle r="4" fill="#C9A961"/><text x="14" y="3">San Nicolás</text></g>
+          <g transform="translate(345,260)"><circle r="9" fill="#0F2545"/><circle r="4" fill="#C9A961"/><text x="14" y="3">Guadalupe</text></g>
+          <g transform="translate(380,140)"><circle r="9" fill="#0F2545"/><circle r="4" fill="#C9A961"/><text x="14" y="3">Apodaca</text></g>
+          <g transform="translate(395,90)"><circle r="9" fill="#0F2545"/><circle r="4" fill="#C9A961"/><text x="14" y="3">Escobedo</text></g>
+          <g transform="translate(160,180)"><circle r="9" fill="#0F2545"/><circle r="4" fill="#C9A961"/><text x="-78" y="3">San Pedro</text></g>
+          <g transform="translate(140,290)"><circle r="9" fill="#0F2545"/><circle r="4" fill="#C9A961"/><text x="-90" y="3">Sta. Catarina</text></g>
+          <g transform="translate(95,120)"><circle r="9" fill="#0F2545"/><circle r="4" fill="#C9A961"/><text x="-50" y="3">García</text></g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
 
-  <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container faq-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Preguntas frecuentes</div>
+      <h2 style="margin-top:14px">Lo que más nos preguntan antes de agendar.</h2>
+      <p style="margin:22px 0;color:var(--body);max-width:380px;line-height:1.65">¿Te quedó otra duda? Escríbenos directo por WhatsApp, te respondemos en horario hábil.</p>
+      <a href="https://wa.me/528139078447?text=Hola%2C%20tengo%20una%20pregunta" class="btn btn-navy" target="_blank" rel="noopener">
+        <svg class="ico-wa"><use href="#ico-wa"/></svg>
+        Preguntar por WhatsApp
+      </a>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>¿Atienden por WhatsApp?<span class="plus">+</span></summary>
+        <p>Sí, es nuestro canal principal. Toda la conversación —desde la primera consulta hasta el seguimiento post-servicio— ocurre en el mismo chat. Sin call center, sin formularios largos.</p>
+      </details>
+      <details class="faq-item" open>
+        <summary>¿Hacen visitas a domicilio?<span class="plus">+</span></summary>
+        <p>Sí. Todos nuestros servicios se realizan en tu casa o departamento, dentro de la zona metropolitana de Monterrey, con técnicos identificados.</p>
+      </details>
+      <details class="faq-item" open>
+        <summary>¿Pueden dar precio antes de ir?<span class="plus">+</span></summary>
+        <p>En muchos casos sí. Con foto y descripción te damos un rango estimado por WhatsApp. La cotización final se confirma en sitio cuando ya vimos el detalle del trabajo, y siempre antes de comenzar.</p>
+      </details>
+      <details class="faq-item" open>
+        <summary>¿Qué zonas cubren?<span class="plus">+</span></summary>
+        <p>Atendemos las 8 ciudades del área metropolitana de Monterrey: Monterrey, San Pedro Garza García, San Nicolás de los Garza, Guadalupe, Apodaca, General Escobedo, Santa Catarina y García. Si tu colonia no aparece, escríbenos y confirmamos disponibilidad.</p>
+      </details>
+      <details class="faq-item" open>
+        <summary>¿Atienden casos urgentes?<span class="plus">+</span></summary>
+        <p>Atendemos casos urgentes según disponibilidad del día. Escríbenos y te confirmamos en minutos si hay un técnico libre. El compromiso es resolver tu pendiente esta misma semana.</p>
+      </details>
+      <details class="faq-item" open>
+        <summary>¿Qué trabajos eléctricos hacen?<span class="plus">+</span></summary>
+        <p>Trabajos residenciales: contactos, apagadores, luminarias, falsos contactos, cortos básicos, revisión de tableros y reparaciones generales. No realizamos obras eléctricas mayores ni proyectos industriales.</p>
+      </details>
+      <details class="faq-item" open>
+        <summary>¿Dan mantenimiento a minisplits?<span class="plus">+</span></summary>
+        <p>Sí: lavado profundo, mantenimiento preventivo, recarga de gas, diagnóstico cuando no enfría o tira agua, instalación nueva y reubicación.</p>
+      </details>
+      <details class="faq-item" open>
+        <summary>¿Pueden resolver varios pendientes en una sola visita?<span class="plus">+</span></summary>
+        <p>Sí. Si tienes una lista de tareas pequeñas (instalar, ajustar, revisar), agendamos visita por hora y avanzamos por orden de prioridad.</p>
+      </details>
+      <details class="faq-item" open>
+        <summary>¿Tienen garantía?<span class="plus">+</span></summary>
+        <p>Sí, 30 días de garantía por escrito sobre el trabajo realizado. Si algo vuelve a fallar dentro de ese periodo en el mismo servicio, regresamos sin costo.</p>
+      </details>
+    </div>
+  </div>
+</section>
 
-  <script>
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var nav=document.querySelector('.header-nav');if(nav)nav.classList.remove('open');var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
-document.querySelectorAll('.btn-whatsapp,.whatsapp-float').forEach(function(b){b.addEventListener('click',function(){console.log('WhatsApp click tracked');});});
-var f=document.querySelector('.whatsapp-float'),h=document.querySelector('.hero');
-if(f&&h){var o=new IntersectionObserver(function(e){var v=e[0].isIntersecting;f.style.opacity=v?'0':'1';f.style.pointerEvents=v?'none':'auto';},{threshold:0.3});o.observe(h);}
-var s=document.querySelectorAll('.problemas,.servicios,.confianza,.como-funciona,.cobertura,.cta-final');
-if('IntersectionObserver' in window){var so=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');so.unobserve(x.target);}});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});s.forEach(function(x){x.classList.add('fade-in');so.observe(x);});}
-  </script>
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <img src="Logo%20Blanco.webp" alt="Núcleo Hogar" class="final-cta-logo">
+    <h2>¿Tienes un pendiente en casa?</h2>
+    <p>Cuéntanos qué necesitas resolver y te orientamos por WhatsApp. Sin compromiso, sin formularios.</p>
+    <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="btn btn-wa" target="_blank" rel="noopener">
+      <svg class="ico-wa"><use href="#ico-wa"/></svg>
+      Escribir por WhatsApp
+    </a>
+    <div class="small">Lun–Sáb · 8:00 a 20:00 · Monterrey y área metropolitana</div>
+  </div>
+</section>
 
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "name": "Núcleo Hogar",
-    "description": "Servicios de electricista, instalación de minisplit y plomería en Monterrey y área metropolitana. Técnicos certificados, trabajo limpio y precio claro.",
-    "url": "https://nucleohogar.com.mx",
-    "telephone": "+528139078447",
-    "areaServed": [
-      {"@type":"City","name":"Monterrey","containedInPlace":{"@type":"State","name":"Nuevo León"}},
-      {"@type":"City","name":"San Pedro Garza García","containedInPlace":{"@type":"State","name":"Nuevo León"}},
-      {"@type":"City","name":"Guadalupe","containedInPlace":{"@type":"State","name":"Nuevo León"}},
-      {"@type":"City","name":"San Nicolás de los Garza","containedInPlace":{"@type":"State","name":"Nuevo León"}},
-      {"@type":"City","name":"Apodaca","containedInPlace":{"@type":"State","name":"Nuevo León"}},
-      {"@type":"City","name":"Escobedo","containedInPlace":{"@type":"State","name":"Nuevo León"}},
-      {"@type":"City","name":"Santa Catarina","containedInPlace":{"@type":"State","name":"Nuevo León"}},
-      {"@type":"City","name":"García","containedInPlace":{"@type":"State","name":"Nuevo León"}}
-    ],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "25.6866",
-      "longitude": "-100.3161"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Monterrey",
-      "addressRegion": "Nuevo León",
-      "addressCountry": "MX"
-    },
-    "priceRange": "$$",
-    "image": "https://nucleohogar.com.mx/Hero.webp",
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "08:00",
-      "closes": "20:00"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Servicios del Hogar",
-      "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electricista en Monterrey", "url": "https://nucleohogar.com.mx/electricista-monterrey/"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Instalación de Minisplit en Monterrey", "url": "https://nucleohogar.com.mx/minisplit-monterrey/"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Plomero en Monterrey", "url": "https://nucleohogar.com.mx/plomeria-monterrey/"}}
-      ]
-    },
-    "sameAs": []
-  }
-  </script>
+<!-- FOOTER -->
+<footer class="site">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="mark-wrap">
+          <img src="Footer%20logo.webp" alt="Núcleo Hogar — Cuidamos lo que más amas">
+          <div>
+            <div class="wm-1">Núcleo Hogar</div>
+            <span class="wm-2">CUIDAMOS LO QUE MÁS AMAS</span>
+          </div>
+        </div>
+        <p>Servicios confiables de electricidad residencial, minisplit, plomería y mantenimiento general para casas y departamentos en Monterrey y área metropolitana.</p>
+      </div>
+      <div>
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="/electricista-monterrey/">Electricidad residencial</a></li>
+          <li><a href="/minisplit-monterrey/">Minisplit</a></li>
+          <li><a href="/plomeria-monterrey/">Plomería</a></li>
+          <li><a href="https://wa.me/528139078447?text=Hola%2C%20tengo%20varios%20pendientes%20en%20mi%20casa%20y%20quiero%20cotizar" target="_blank" rel="noopener">Mantenimiento general</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Información</h5>
+        <ul>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#zonas">Zonas de servicio</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+          <li><a href="/aviso-de-privacidad/">Aviso de privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="https://wa.me/528139078447" target="_blank" rel="noopener">WhatsApp: 81-3907-8447</a></li>
+          <li><a href="mailto:contacto@nucleohogar.com.mx">contacto@nucleohogar.com.mx</a></li>
+          <li>Lun–Sáb · 8:00 a 20:00</li>
+          <li>Monterrey, N.L.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Núcleo Hogar · Cuidamos lo que más amas</div>
+      <div>Hecho en Monterrey</div>
+    </div>
+  </div>
+</footer>
 
-  <!-- WhatsApp Conversion Tracking -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        var pagina = document.title;
-        var servicio = 'general';
-        var path = window.location.pathname;
-        if (path.indexOf('electricista') > -1) servicio = 'electricista';
-        else if (path.indexOf('minisplit') > -1) servicio = 'minisplit';
-        else if (path.indexOf('plomeria') > -1) servicio = 'plomeria';
-        
-        var ubicacion = 'otro';
-        var el = e.currentTarget;
-        if (el.classList.contains('header-cta')) ubicacion = 'header';
-        else if (el.classList.contains('whatsapp-float')) ubicacion = 'flotante';
-        else if (el.closest && el.closest('.hero')) ubicacion = 'hero';
-        else if (el.closest && el.closest('.cta-section, .final-cta')) ubicacion = 'cta_final';
-        else if (el.closest && el.closest('.pricing, .servicios')) ubicacion = 'servicios';
+<!-- FLOATING WA -->
+<a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="wa-float" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg><use href="#ico-wa"/></svg>
+  <span>Chatear ahora</span>
+</a>
 
+<!-- SCHEMA: HomeAndConstructionBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Núcleo Hogar",
+  "description": "Servicios de electricista, instalación de minisplit y plomería en Monterrey y área metropolitana. Técnicos certificados, trabajo limpio y precio claro.",
+  "url": "https://nucleohogar.com.mx",
+  "telephone": "+528139078447",
+  "email": "contacto@nucleohogar.com.mx",
+  "areaServed": [
+    {"@type":"City","name":"Monterrey","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+    {"@type":"City","name":"San Pedro Garza García","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+    {"@type":"City","name":"Guadalupe","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+    {"@type":"City","name":"San Nicolás de los Garza","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+    {"@type":"City","name":"Apodaca","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+    {"@type":"City","name":"Escobedo","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+    {"@type":"City","name":"Santa Catarina","containedInPlace":{"@type":"State","name":"Nuevo León"}},
+    {"@type":"City","name":"García","containedInPlace":{"@type":"State","name":"Nuevo León"}}
+  ],
+  "geo": {"@type": "GeoCoordinates","latitude": "25.6866","longitude": "-100.3161"},
+  "address": {"@type": "PostalAddress","addressLocality": "Monterrey","addressRegion": "Nuevo León","addressCountry": "MX"},
+  "priceRange": "$$",
+  "image": "https://nucleohogar.com.mx/Hero.webp",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "08:00","closes": "20:00"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios del Hogar",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electricista en Monterrey", "url": "https://nucleohogar.com.mx/electricista-monterrey/"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Instalación de Minisplit en Monterrey", "url": "https://nucleohogar.com.mx/minisplit-monterrey/"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Plomero en Monterrey", "url": "https://nucleohogar.com.mx/plomeria-monterrey/"}}
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "ratingCount": "6"
+  },
+  "sameAs": []
+}
+</script>
+
+<!-- SCHEMA: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"¿Atienden por WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Sí, es nuestro canal principal. Toda la conversación —desde la primera consulta hasta el seguimiento post-servicio— ocurre en el mismo chat. Sin call center, sin formularios largos."}},
+    {"@type":"Question","name":"¿Hacen visitas a domicilio?","acceptedAnswer":{"@type":"Answer","text":"Sí. Todos nuestros servicios se realizan en tu casa o departamento, dentro de la zona metropolitana de Monterrey, con técnicos identificados."}},
+    {"@type":"Question","name":"¿Pueden dar precio antes de ir?","acceptedAnswer":{"@type":"Answer","text":"En muchos casos sí. Con foto y descripción te damos un rango estimado por WhatsApp. La cotización final se confirma en sitio cuando ya vimos el detalle del trabajo, y siempre antes de comenzar."}},
+    {"@type":"Question","name":"¿Qué zonas cubren?","acceptedAnswer":{"@type":"Answer","text":"Atendemos las 8 ciudades del área metropolitana de Monterrey: Monterrey, San Pedro Garza García, San Nicolás de los Garza, Guadalupe, Apodaca, General Escobedo, Santa Catarina y García."}},
+    {"@type":"Question","name":"¿Atienden casos urgentes?","acceptedAnswer":{"@type":"Answer","text":"Atendemos casos urgentes según disponibilidad del día. Escríbenos y te confirmamos en minutos si hay un técnico libre."}},
+    {"@type":"Question","name":"¿Qué trabajos eléctricos hacen?","acceptedAnswer":{"@type":"Answer","text":"Trabajos residenciales: contactos, apagadores, luminarias, falsos contactos, cortos básicos, revisión de tableros y reparaciones generales. No realizamos obras eléctricas mayores ni proyectos industriales."}},
+    {"@type":"Question","name":"¿Dan mantenimiento a minisplits?","acceptedAnswer":{"@type":"Answer","text":"Sí: lavado profundo, mantenimiento preventivo, recarga de gas, diagnóstico cuando no enfría o tira agua, instalación nueva y reubicación."}},
+    {"@type":"Question","name":"¿Pueden resolver varios pendientes en una sola visita?","acceptedAnswer":{"@type":"Answer","text":"Sí. Si tienes una lista de tareas pequeñas (instalar, ajustar, revisar), agendamos visita por hora y avanzamos por orden de prioridad."}},
+    {"@type":"Question","name":"¿Tienen garantía?","acceptedAnswer":{"@type":"Answer","text":"Sí, 30 días de garantía por escrito sobre el trabajo realizado. Si algo vuelve a fallar dentro de ese periodo en el mismo servicio, regresamos sin costo."}}
+  ]
+}
+</script>
+
+<script>
+// Smooth scroll + cierre de menú móvil
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var href=this.getAttribute('href');
+    if(href==='#'||href.length<2)return;
+    e.preventDefault();
+    var nav=document.querySelector('nav.links');
+    if(nav)nav.classList.remove('open');
+    var t=document.querySelector(href);
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// Floating WA: ocultar cuando estamos en hero
+var f=document.querySelector('.wa-float'),h=document.querySelector('.hero');
+if(f&&h&&'IntersectionObserver' in window){
+  var o=new IntersectionObserver(function(e){
+    var v=e[0].isIntersecting;
+    if(v){f.classList.add('hidden')}else{f.classList.remove('hidden')}
+  },{threshold:0.3});
+  o.observe(h);
+}
+
+// GA4 tracking de WhatsApp
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var pagina = document.title;
+      var servicio = 'general';
+      var path = window.location.pathname;
+      if (path.indexOf('electricista') > -1) servicio = 'electricista';
+      else if (path.indexOf('minisplit') > -1) servicio = 'minisplit';
+      else if (path.indexOf('plomeria') > -1) servicio = 'plomeria';
+
+      var ubicacion = 'otro';
+      var el = e.currentTarget;
+      if (el.classList.contains('nav-cta-desktop')) ubicacion = 'header';
+      else if (el.classList.contains('wa-float')) ubicacion = 'flotante';
+      else if (el.closest && el.closest('.hero')) ubicacion = 'hero';
+      else if (el.closest && el.closest('.final-cta')) ubicacion = 'cta_final';
+      else if (el.closest && el.closest('.cases')) ubicacion = 'casos';
+      else if (el.closest && el.closest('.services')) ubicacion = 'servicios';
+      else if (el.closest && el.closest('.faq')) ubicacion = 'faq';
+      else if (el.closest && el.closest('.zones')) ubicacion = 'zonas';
+      else if (el.closest && el.closest('footer')) ubicacion = 'footer';
+
+      if (typeof gtag === 'function') {
         gtag('event', 'whatsapp_lead', {
           event_category: 'conversion',
           event_label: servicio,
@@ -499,9 +1019,11 @@ if('IntersectionObserver' in window){var so=new IntersectionObserver(function(e)
           ubicacion_boton: ubicacion,
           pagina: pagina
         });
-      });
+      }
     });
   });
-  </script>
+});
+</script>
+
 </body>
 </html>

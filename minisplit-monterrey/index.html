@@ -1,139 +1,38 @@
-#!/usr/bin/env node
-/**
- * Núcleo Hogar — Static Site Builder (v2 — diseño navy/gold/paper)
- *
- * Genera /<slug>/index.html para cada servicio publicado en Sanity.
- * Mismo lenguaje visual que el home: Plus Jakarta Sans + Inter, paleta navy + gold + paper,
- * con secciones: Breadcrumb → Hero → Pain → Why → Detalles → Cases → FAQ → Final CTA → Otros servicios.
- *
- * Usage: node build.js
- *
- * Required env vars:
- *   SANITY_PROJECT_ID  - Your Sanity project ID
- *   SANITY_DATASET     - Dataset name (default: "production")
- *   SANITY_TOKEN       - Read token (optional for public datasets)
- *
- * Zero npm dependencies — uses only native Node modules.
- */
-
-const https = require('https')
-const fs = require('fs')
-const path = require('path')
-
-// ─── Config ───
-const PROJECT_ID = process.env.SANITY_PROJECT_ID
-const DATASET = process.env.SANITY_DATASET || 'production'
-const TOKEN = process.env.SANITY_TOKEN || ''
-const WA_NUMBER = '528139078447'
-const DOMAIN = 'https://nucleohogar.com.mx'
-const GA4_ID = 'G-WJDX79TCKH'
-const BRAND = 'Núcleo Hogar'
-const BRAND_TAGLINE = 'Cuidamos lo que más amas'
-const DEFAULT_OG_IMAGE = `${DOMAIN}/og-default.jpg`
-
-if (!PROJECT_ID) {
-  console.error('❌ Falta SANITY_PROJECT_ID. Configura tu archivo .env')
-  process.exit(1)
-}
-
-// ─── Sanity API fetch (nativo, sin SDK) ───
-function sanityFetch(query) {
-  return new Promise((resolve, reject) => {
-    const encoded = encodeURIComponent(query)
-    const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/${DATASET}?query=${encoded}`
-    const options = {
-      headers: TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {},
-    }
-    https.get(url, options, (res) => {
-      let data = ''
-      res.on('data', (chunk) => (data += chunk))
-      res.on('end', () => {
-        try {
-          const parsed = JSON.parse(data)
-          if (parsed.error) {
-            console.error('Sanity API error:', parsed.error)
-            reject(new Error(parsed.error.description || parsed.error.type || 'Unknown Sanity error'))
-            return
-          }
-          resolve(parsed.result || [])
-        } catch (e) {
-          console.error('Failed to parse Sanity response:', data.substring(0, 500))
-          reject(e)
-        }
-      })
-    }).on('error', reject)
-  })
-}
-
-// ─── Image URL builder ───
-function imageUrl(ref, width = 600) {
-  if (!ref || !ref.asset || !ref.asset._ref) return ''
-  const parts = ref.asset._ref.replace('image-', '').split('-')
-  const id = parts.slice(0, -2).join('-')
-  const dimensions = parts[parts.length - 2]
-  const format = parts[parts.length - 1]
-  return `https://cdn.sanity.io/images/${PROJECT_ID}/${DATASET}/${id}-${dimensions}.${format}?w=${width}&auto=format`
-}
-
-// ─── Escape HTML ───
-function escapeHtml(str) {
-  if (!str || typeof str !== 'string') return ''
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-}
-
-// ─── Category labels & SEO ───
-const CATEGORY_LABELS = {
-  electricista: 'Electricista',
-  minisplit: 'Minisplit / Aire Acondicionado',
-  plomeria: 'Plomería',
-  mantenimiento: 'Mantenimiento General',
-  impermeabilizacion: 'Impermeabilización',
-  pintura: 'Pintura',
-  cerrajeria: 'Cerrajería',
-}
-
-const CATEGORY_ICONS = {
-  electricista: 'ico-bolt',
-  minisplit: 'ico-snow',
-  plomeria: 'ico-drop',
-  mantenimiento: 'ico-wrench',
-  impermeabilizacion: 'ico-shield',
-  pintura: 'ico-wrench',
-  cerrajeria: 'ico-shield',
-}
-
-const CATEGORY_SEO = {
-  electricista: { keyword: 'electricista en Monterrey', serviceType: 'Electricista Residencial' },
-  minisplit: { keyword: 'instalación de minisplit en Monterrey', serviceType: 'Instalación y Mantenimiento de Minisplit' },
-  plomeria: { keyword: 'plomero en Monterrey', serviceType: 'Plomería Residencial' },
-  mantenimiento: { keyword: 'mantenimiento del hogar en Monterrey', serviceType: 'Mantenimiento Residencial' },
-  impermeabilizacion: { keyword: 'impermeabilización en Monterrey', serviceType: 'Impermeabilización Residencial' },
-  pintura: { keyword: 'pintor en Monterrey', serviceType: 'Pintura Residencial' },
-  cerrajeria: { keyword: 'cerrajero en Monterrey', serviceType: 'Cerrajería Residencial' },
-}
-
-// ─── SEO helpers ───
-function generateSeoTitle(s) {
-  const cat = CATEGORY_LABELS[s.category] || 'Servicio'
-  return `${cat} en Monterrey | Servicio Residencial | ${BRAND}`
-}
-
-function generateSeoDescription(s) {
-  const cat = CATEGORY_LABELS[s.category] || 'Servicio'
-  return `${cat} profesional en Monterrey y área metropolitana. Técnicos puntuales, trabajo limpio y garantía por escrito. Cotización rápida por WhatsApp.`
-}
-
-// ─── WhatsApp URL helper ───
-function waUrl(message) {
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`
-}
-
-// ─── CSS Design System (mismo lenguaje que el home) ───
-const CSS = `
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJDX79TCKH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WJDX79TCKH');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minisplit en Monterrey | Instalación y Mantenimiento | Núcleo Hogar</title>
+  <meta name="description" content="Instalación, mantenimiento y reparación de minisplit en Monterrey. Técnicos certificados, todas las marcas, garantía por escrito. Cotización rápida por WhatsApp.">
+  <meta name="keywords" content="minisplit monterrey, instalación minisplit monterrey, mantenimiento minisplit monterrey, reparación minisplit monterrey, aire acondicionado monterrey">
+  <link rel="canonical" href="https://nucleohogar.com.mx/minisplit-monterrey/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <meta property="og:title" content="Minisplit en Monterrey | Instalación y Mantenimiento | Núcleo Hogar">
+  <meta property="og:description" content="Instalación, mantenimiento y reparación de minisplit en Monterrey. Técnicos certificados, todas las marcas, garantía por escrito. Cotización rápida por WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nucleohogar.com.mx/minisplit-monterrey/">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="Núcleo Hogar">
+  <meta property="og:image" content="https://nucleohogar.com.mx/og-default.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Minisplit en Monterrey | Instalación y Mantenimiento | Núcleo Hogar">
+  <meta name="twitter:description" content="Instalación, mantenimiento y reparación de minisplit en Monterrey. Técnicos certificados, todas las marcas, garantía por escrito. Cotización rápida por WhatsApp.">
+  <meta name="twitter:image" content="https://nucleohogar.com.mx/og-default.jpg">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
 :root{
   --navy:#0F2545;--navy-2:#1B3A6B;--navy-3:#2A5298;--navy-soft:#3a5784;
   --gold:#C9A961;--gold-soft:#E4D4A8;--gold-deep:#a8884a;
@@ -333,10 +232,10 @@ footer.site ul li a:hover{color:var(--gold-soft)}
   .brand .wordmark{display:none}
   .brand img.brand-logo{height:40px}
 }
-`
+</style>
+</head>
+<body>
 
-// ─── SVG sprite (compartido) ───
-const SVG_SPRITE = `
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="ico-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
@@ -352,192 +251,14 @@ const SVG_SPRITE = `
     <symbol id="ico-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v10a2 2 0 0 1-2 2h-3v-7H8v7H5a2 2 0 0 1-2-2V11Z" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
-`
 
-const WA_BTN_HTML = '<svg class="ico-wa"><use href="#ico-wa"/></svg>'
-
-// ─── Service page template ───
-function servicePageHtml(s, otherServices) {
-  const slug = s.slug?.current || ''
-  const seoTitle = escapeHtml(s.seoTitle || generateSeoTitle(s))
-  const seoDesc = escapeHtml(s.seoDescription || generateSeoDescription(s))
-  const seoKeywords = s.seoKeywords ? `\n  <meta name="keywords" content="${escapeHtml(s.seoKeywords)}">` : ''
-  const heroImg = imageUrl(s.heroImage, 800)
-  const socialImage = imageUrl(s.heroImage, 1200) || DEFAULT_OG_IMAGE
-  const catLabel = CATEGORY_LABELS[s.category] || 'Servicio'
-  const catIcon = CATEGORY_ICONS[s.category] || 'ico-wrench'
-
-  // WhatsApp messages
-  const waHero = waUrl(s.heroWaMessage || `Hola, necesito ${catLabel.toLowerCase()} en Monterrey`)
-  const waMid = waUrl(s.midWaMessage || `Hola, estoy viendo su página de ${s.title} y me interesa una cotización`)
-  const waClose = waUrl(s.ctaWaMessage || `Hola, necesito ${catLabel.toLowerCase()} en Monterrey. ¿Pueden ayudarme?`)
-  const waNav = waUrl('Hola, vi su página y necesito ayuda con un tema en mi casa')
-
-  // Hero visual
-  const heroVisualHtml = heroImg ? `
-    <div class="hero-visual">
-      <img src="${heroImg}" alt="${escapeHtml(s.title)} — técnico profesional de ${BRAND} en Monterrey">
-      <div class="badge">
-        <div class="wa-ico"><svg><use href="#ico-wa"/></svg></div>
-        <div>
-          <b>Te contestamos hoy</b>
-          <span>Lun–Sáb · 8:00 a 20:00</span>
-        </div>
-      </div>
-    </div>` : ''
-
-  // Pain bullets
-  const painBulletsHtml = (s.painPoints || []).slice(0, 6).map((p, i) => {
-    const icoIds = ['ico-clock', 'ico-chat', 'ico-shield', 'ico-home', 'ico-bolt', 'ico-drop']
-    return `<div class="pain-bullet">
-      <div class="ico"><svg><use href="#${icoIds[i % icoIds.length]}"/></svg></div>
-      <b>${escapeHtml(p.title)}</b>
-      <span>${escapeHtml(p.description)}</span>
-    </div>`
-  }).join('\n        ')
-
-  const dangerHtml = s.dangerAlert?.title ? `
-        <div class="alerta-peligro">
-          <strong>${escapeHtml(s.dangerAlert.title)}</strong>
-          <p>${escapeHtml(s.dangerAlert.text)}</p>
-        </div>` : ''
-
-  // Solution points
-  const solutionsHtml = (s.solutions || []).slice(0, 6).map(sol => `
-        <div class="sol-point">
-          <div class="check"><svg><use href="#ico-check"/></svg></div>
-          <div>
-            <b>${escapeHtml(sol.title)}</b>
-            <span>${escapeHtml(sol.description)}</span>
-          </div>
-        </div>`).join('')
-
-  // Service details
-  const detailsHtml = (s.serviceDetails || []).map(d => `
-        <div class="detalle-card">
-          <h3>${escapeHtml(d.title)}</h3>
-          <p>${escapeHtml(d.description)}</p>
-        </div>`).join('')
-
-  // FAQs (todas abiertas + JSON-LD)
-  const faqsHtml = (s.faqs || []).map((f, i) => `
-        <details class="faq-item"${i < 3 ? ' open' : ''}>
-          <summary>${escapeHtml(f.question)}<span class="plus">+</span></summary>
-          <p>${escapeHtml(f.answer)}</p>
-        </details>`).join('')
-
-  const faqSchema = (s.faqs || []).length > 0 ? `
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[${(s.faqs || []).map(f =>
-    `{"@type":"Question","name":"${escapeHtml(f.question)}","acceptedAnswer":{"@type":"Answer","text":"${escapeHtml(f.answer)}"}}`
-  ).join(',')}]}
-  </script>` : ''
-
-  // Service JSON-LD
-  const catSeo = CATEGORY_SEO[s.category] || { keyword: s.title, serviceType: s.title }
-  const serviceSchema = `
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Service","name":"${escapeHtml(s.title)}","description":"${seoDesc}","provider":{"@type":"HomeAndConstructionBusiness","name":"${BRAND}","url":"${DOMAIN}","telephone":"+${WA_NUMBER}","email":"contacto@nucleohogar.com.mx","areaServed":{"@type":"City","name":"Monterrey"},"address":{"@type":"PostalAddress","addressLocality":"Monterrey","addressRegion":"Nuevo León","addressCountry":"MX"}},"serviceType":"${escapeHtml(catSeo.serviceType)}","areaServed":[{"@type":"City","name":"Monterrey"},{"@type":"City","name":"San Pedro Garza García"},{"@type":"City","name":"Guadalupe"},{"@type":"City","name":"San Nicolás de los Garza"},{"@type":"City","name":"Apodaca"},{"@type":"City","name":"Escobedo"},{"@type":"City","name":"Santa Catarina"},{"@type":"City","name":"García"}]}
-  </script>`
-
-  // BreadcrumbList JSON-LD
-  const breadcrumbSchema = `
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"${DOMAIN}/"},{"@type":"ListItem","position":2,"name":"${escapeHtml(s.title)}","item":"${DOMAIN}/${slug}/"}]}
-  </script>`
-
-  // Other services
-  const otherServicesHtml = otherServices
-    .filter(o => o._id !== s._id)
-    .map(o => {
-      const oSlug = o.slug?.current || ''
-      const oCat = CATEGORY_LABELS[o.category] || o.title
-      const oIco = CATEGORY_ICONS[o.category] || 'ico-wrench'
-      return `
-        <a href="/${oSlug}/" class="otro-card">
-          <div class="ico-sm"><svg><use href="#${oIco}"/></svg></div>
-          <div>
-            <h3>${escapeHtml(oCat)} en Monterrey</h3>
-            <p>${escapeHtml(o.heroSubtitle || generateSeoDescription(o)).substring(0, 110)}</p>
-          </div>
-        </a>`
-    }).join('')
-
-  // Cases (genéricos por categoría)
-  const casesByCategory = {
-    electricista: [
-      ['Quiero instalar una lámpara', 'ico-bolt'],
-      ['Se quemó un contacto', 'ico-bolt'],
-      ['Tengo una falla eléctrica', 'ico-bolt'],
-    ],
-    minisplit: [
-      ['Mi minisplit no enfría', 'ico-snow'],
-      ['Mi minisplit tira agua', 'ico-drop'],
-      ['Mantenimiento antes del calor', 'ico-snow'],
-    ],
-    plomeria: [
-      ['Tengo una fuga en el lavabo', 'ico-drop'],
-      ['Se tapó el WC', 'ico-drop'],
-      ['Cambio de llaves', 'ico-wrench'],
-    ],
-    mantenimiento: [
-      ['Quiero resolver varios pendientes', 'ico-wrench'],
-      ['Necesito ajustes generales', 'ico-wrench'],
-      ['Mantenimiento preventivo', 'ico-shield'],
-    ],
-  }
-  const cases = casesByCategory[s.category] || casesByCategory.mantenimiento
-  const casesHtml = cases.map(([q, ico]) => `
-        <a class="case-card" href="${waUrl('Hola, ' + q.toLowerCase())}" target="_blank" rel="noopener">
-          <div class="ico-mini"><svg><use href="#${ico}"/></svg></div>
-          <div class="q">"${escapeHtml(q)}"</div>
-          <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
-        </a>`).join('')
-
-  return `<!DOCTYPE html>
-<html lang="es-MX">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_ID}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${GA4_ID}');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${seoTitle}</title>
-  <meta name="description" content="${seoDesc}">${seoKeywords}
-  <link rel="canonical" href="${DOMAIN}/${slug}/">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  ${heroImg ? `<link rel="preload" as="image" href="${heroImg}" fetchpriority="high">` : ''}
-  <meta property="og:title" content="${seoTitle}">
-  <meta property="og:description" content="${seoDesc}">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="${DOMAIN}/${slug}/">
-  <meta property="og:locale" content="es_MX">
-  <meta property="og:site_name" content="${BRAND}">
-  <meta property="og:image" content="${socialImage}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${seoTitle}">
-  <meta name="twitter:description" content="${seoDesc}">
-  <meta name="twitter:image" content="${socialImage}">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>${CSS}</style>
-</head>
-<body>
-${SVG_SPRITE}
 
 <header class="nav">
   <div class="container nav-inner">
     <a href="/" class="brand">
-      <img src="/Logo%20Azul.webp" alt="${BRAND} — ${BRAND_TAGLINE}" class="brand-logo">
+      <img src="/Logo%20Azul.webp" alt="Núcleo Hogar — Cuidamos lo que más amas" class="brand-logo">
       <div class="wordmark">
-        <span class="wm-1">${BRAND}</span>
+        <span class="wm-1">Núcleo Hogar</span>
         <span class="wm-2">MONTERREY · MX</span>
       </div>
     </a>
@@ -550,8 +271,8 @@ ${SVG_SPRITE}
       <a href="/#zonas">Zonas</a>
       <a href="/#faq">Preguntas</a>
     </nav>
-    <a href="${waNav}" class="btn btn-wa nav-cta-desktop" target="_blank" rel="noopener">
-      ${WA_BTN_HTML}
+    <a href="https://wa.me/528139078447?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20necesito%20ayuda%20con%20un%20tema%20en%20mi%20casa" class="btn btn-wa nav-cta-desktop" target="_blank" rel="noopener">
+      <svg class="ico-wa"><use href="#ico-wa"/></svg>
       WhatsApp
     </a>
   </div>
@@ -559,20 +280,20 @@ ${SVG_SPRITE}
 
 <div class="breadcrumb">
   <div class="container">
-    <a href="/">Inicio</a> &rsaquo; <span>${escapeHtml(s.title)}</span>
+    <a href="/">Inicio</a> &rsaquo; <span>Minisplit en Monterrey</span>
   </div>
 </div>
 
 <section class="hero" id="inicio">
   <div class="container hero-grid">
     <div>
-      <div class="eyebrow"><span class="dot"></span>${escapeHtml(s.heroTag || `${catLabel} en Monterrey`)}</div>
-      <h1>${escapeHtml(s.heroTitle || s.title)}</h1>
-      ${s.heroSubtitle ? `<p class="lead">${escapeHtml(s.heroSubtitle)}</p>` : ''}
+      <div class="eyebrow"><span class="dot"></span>Minisplit en Monterrey</div>
+      <h1>Su minisplit no enfría, huele raro o gotea — y el calor de Monterrey no espera</h1>
+      <p class="lead">Un equipo que no enfría bien, que gotea agua dentro de la casa o que hace ruidos extraños no solo es incómodo — está gastando más luz de la necesaria y puede dañarse por completo si no se atiende a tiempo.</p>
       <div class="ctas">
-        <a href="${waHero}" class="btn btn-wa" target="_blank" rel="noopener">
-          ${WA_BTN_HTML}
-          ${escapeHtml(s.heroCta || 'Pedir cotización por WhatsApp')}
+        <a href="https://wa.me/528139078447?text=Hola%2C%20necesito%20servicio%20de%20minisplit%20en%20Monterrey" class="btn btn-wa" target="_blank" rel="noopener">
+          <svg class="ico-wa"><use href="#ico-wa"/></svg>
+          Pedir cotización por WhatsApp
         </a>
         <a href="#detalles" class="btn btn-ghost">Ver servicios</a>
       </div>
@@ -583,29 +304,62 @@ ${SVG_SPRITE}
         <div class="t"><b>30 días</b><span>de garantía por escrito</span></div>
       </div>
     </div>
-    ${heroVisualHtml}
+    
   </div>
 </section>
 
-${painBulletsHtml ? `<section class="pain">
+<section class="pain">
   <div class="container">
     <div class="pain-head">
       <div class="eyebrow gold"><span class="dot"></span>Lo entendemos</div>
-      <h2>${escapeHtml(s.painSectionTitle || 'Problemas que no deberías ignorar')}</h2>
+      <h2>Problemas con el minisplit que la gente ignora hasta que deja de funcionar</h2>
     </div>
     <div class="pain-bullets">
-        ${painBulletsHtml}
-    </div>${dangerHtml}
+        <div class="pain-bullet">
+      <div class="ico"><svg><use href="#ico-clock"/></svg></div>
+      <b>El minisplit prende pero no enfría</b>
+      <span>Puede ser falta de gas refrigerante, filtros tapados o un compresor dañado. Mientras más lo use así, más electricidad gasta y más rápido se deteriora el equipo.</span>
+    </div>
+        <div class="pain-bullet">
+      <div class="ico"><svg><use href="#ico-chat"/></svg></div>
+      <b>Gotea agua dentro de la casa</b>
+      <span>El dren está tapado o la charola de condensado está rota. El agua puede dañar su pared, su piso o causar humedad que genera moho.</span>
+    </div>
+        <div class="pain-bullet">
+      <div class="ico"><svg><use href="#ico-shield"/></svg></div>
+      <b>Huele mal cuando lo prende</b>
+      <span>Hongos y bacterias acumuladas en los filtros y el evaporador. Ese aire que respira su familia puede estar contaminado y causar alergias o problemas respiratorios.</span>
+    </div>
+        <div class="pain-bullet">
+      <div class="ico"><svg><use href="#ico-home"/></svg></div>
+      <b>Hace ruidos extraños</b>
+      <span>Vibraciones, zumbidos o sonidos metálicos indican piezas flojas, un ventilador desbalanceado o un compresor en mal estado. No se va a arreglar solo.</span>
+    </div>
+        <div class="pain-bullet">
+      <div class="ico"><svg><use href="#ico-bolt"/></svg></div>
+      <b>El recibo de luz subió demasiado</b>
+      <span>Un minisplit sucio o con falta de mantenimiento puede consumir hasta 30% más electricidad. El mantenimiento regular es una inversión que se paga sola.</span>
+    </div>
+        <div class="pain-bullet">
+      <div class="ico"><svg><use href="#ico-drop"/></svg></div>
+      <b>Necesita instalar uno nuevo</b>
+      <span>Va a poner un minisplit por primera vez o va a cambiar uno viejo. Una instalación mal hecha reduce la vida del equipo y puede causar problemas eléctricos.</span>
+    </div>
+    </div>
+        <div class="alerta-peligro">
+          <strong>En Monterrey, quedarse sin aire acondicionado no es opción</strong>
+          <p>Con temperaturas que superan los 40°C en verano, un minisplit que no funciona bien es un problema de salud, no solo de comodidad. No espere a que falle por completo.</p>
+        </div>
   </div>
-</section>` : ''}
+</section>
 
-${solutionsHtml ? `<section class="solucion">
+<section class="solucion">
   <div class="container">
     <div class="section-head">
       <div class="left">
         <div class="eyebrow"><span class="dot"></span>Cómo lo resolvemos</div>
-        <h2>${escapeHtml(s.solutionSectionTitle || 'Así trabajamos en tu casa')}</h2>
-        ${s.solutionIntro ? `<p>${escapeHtml(s.solutionIntro)}</p>` : ''}
+        <h2>Cómo trabajamos: diagnóstico primero, después la solución</h2>
+        <p>Revisamos su equipo, le explicamos qué tiene y cuánto cuesta repararlo. Sin sorpresas, sin cargos ocultos.</p>
       </div>
     </div>
     <div class="solucion-grid">
@@ -619,75 +373,162 @@ ${solutionsHtml ? `<section class="solucion">
           </div>
         </div>
       </div>
-      <div class="solucion-points">${solutionsHtml}
+      <div class="solucion-points">
+        <div class="sol-point">
+          <div class="check"><svg><use href="#ico-check"/></svg></div>
+          <div>
+            <b>Diagnóstico técnico completo</b>
+            <span>Revisamos presión de gas, estado del compresor, filtros, dren, conexiones eléctricas y funcionamiento general. Le decimos exactamente qué tiene.</span>
+          </div>
+        </div>
+        <div class="sol-point">
+          <div class="check"><svg><use href="#ico-check"/></svg></div>
+          <div>
+            <b>Mantenimiento preventivo profesional</b>
+            <span>Lavado de filtros y serpentín, revisión de gas, limpieza de dren, verificación eléctrica. Su equipo queda como nuevo y enfriando al máximo.</span>
+          </div>
+        </div>
+        <div class="sol-point">
+          <div class="check"><svg><use href="#ico-check"/></svg></div>
+          <div>
+            <b>Reparación con refacciones originales</b>
+            <span>Si necesita reparación, usamos refacciones de calidad. Reparamos fugas de gas, reemplazamos capacitores, tarjetas y ventiladores.</span>
+          </div>
+        </div>
+        <div class="sol-point">
+          <div class="check"><svg><use href="#ico-check"/></svg></div>
+          <div>
+            <b>Instalación profesional certificada</b>
+            <span>Instalamos su minisplit con carga de gas correcta, tubería de cobre, cableado adecuado y soporte bien anclado. Garantía en mano de obra.</span>
+          </div>
+        </div>
       </div>
     </div>
     <div style="margin-top:36px;text-align:center">
-      <a href="${waMid}" class="btn btn-wa" target="_blank" rel="noopener">
-        ${WA_BTN_HTML}
+      <a href="https://wa.me/528139078447?text=Hola%2C%20estoy%20viendo%20su%20p%C3%A1gina%20de%20minisplit%20en%20Monterrey%20y%20me%20interesa%20una%20cotizaci%C3%B3n" class="btn btn-wa" target="_blank" rel="noopener">
+        <svg class="ico-wa"><use href="#ico-wa"/></svg>
         Cotización rápida por WhatsApp
       </a>
     </div>
   </div>
-</section>` : ''}
+</section>
 
-${detailsHtml ? `<section class="detalles" id="detalles">
+<section class="detalles" id="detalles">
   <div class="container">
     <div class="section-head">
       <div class="left">
         <div class="eyebrow"><span class="dot"></span>Nuestros servicios</div>
-        <h2>${escapeHtml(s.detailSectionTitle || `Servicios de ${catLabel} en Monterrey`)}</h2>
+        <h2>Servicios de minisplit y aire acondicionado en Monterrey</h2>
       </div>
     </div>
-    <div class="detalle-grid">${detailsHtml}
+    <div class="detalle-grid">
+        <div class="detalle-card">
+          <h3>Instalación de minisplit</h3>
+          <p>Instalación completa: soporte, tubería de cobre, cableado eléctrico dedicado, carga de gas y prueba de funcionamiento. Todas las marcas.</p>
+        </div>
+        <div class="detalle-card">
+          <h3>Mantenimiento preventivo</h3>
+          <p>Lavado de filtros, serpentín y turbina. Revisión de gas refrigerante, limpieza de dren y verificación eléctrica. Recomendado cada 6 meses.</p>
+        </div>
+        <div class="detalle-card">
+          <h3>Recarga de gas refrigerante</h3>
+          <p>Verificamos presión, detectamos fugas si las hay, y recargamos con el gas correcto para su equipo (R410a, R22, R32).</p>
+        </div>
+        <div class="detalle-card">
+          <h3>Reparación de minisplit</h3>
+          <p>Diagnosticamos y reparamos cualquier falla: no enfría, gotea, hace ruido, no prende, se apaga solo. Refacciones de calidad.</p>
+        </div>
+        <div class="detalle-card">
+          <h3>Cambio de equipo</h3>
+          <p>Si su equipo ya no tiene reparación, le ayudamos a elegir el tamaño correcto y lo instalamos con todo incluido.</p>
+        </div>
+        <div class="detalle-card">
+          <h3>Desinstalación y reubicación</h3>
+          <p>Si va a remodelar o cambiar de casa, desinstalamos y reinstalamos su equipo en la nueva ubicación con recuperación de gas.</p>
+        </div>
     </div>
   </div>
-</section>` : ''}
+</section>
 
 <section class="cases">
   <div class="container">
     <div class="section-head">
       <div class="left">
         <div class="eyebrow"><span class="dot"></span>Casos frecuentes</div>
-        <h2>Lo que más nos piden de ${catLabel.toLowerCase()}.</h2>
+        <h2>Lo que más nos piden de minisplit / aire acondicionado.</h2>
         <p>Reconoces alguno? Da click para iniciar la conversación con el caso pre-llenado.</p>
       </div>
     </div>
-    <div class="case-grid">${casesHtml}
+    <div class="case-grid">
+        <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20mi%20minisplit%20no%20enfr%C3%ADa" target="_blank" rel="noopener">
+          <div class="ico-mini"><svg><use href="#ico-snow"/></svg></div>
+          <div class="q">"Mi minisplit no enfría"</div>
+          <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20mi%20minisplit%20tira%20agua" target="_blank" rel="noopener">
+          <div class="ico-mini"><svg><use href="#ico-drop"/></svg></div>
+          <div class="q">"Mi minisplit tira agua"</div>
+          <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a class="case-card" href="https://wa.me/528139078447?text=Hola%2C%20mantenimiento%20antes%20del%20calor" target="_blank" rel="noopener">
+          <div class="ico-mini"><svg><use href="#ico-snow"/></svg></div>
+          <div class="q">"Mantenimiento antes del calor"</div>
+          <div class="arrow">Consultar <svg><use href="#ico-arrow"/></svg></div>
+        </a>
     </div>
   </div>
 </section>
 
-${faqsHtml ? `<section class="faq" id="faq">
+<section class="faq" id="faq">
   <div class="container faq-grid">
     <div>
       <div class="eyebrow"><span class="dot"></span>Preguntas frecuentes</div>
-      <h2 style="margin-top:14px">${escapeHtml(s.faqSectionTitle || 'Lo que más nos preguntan.')}</h2>
+      <h2 style="margin-top:14px">Preguntas frecuentes sobre minisplit y aire acondicionado</h2>
       <p style="margin:22px 0;color:var(--body);max-width:380px;line-height:1.65">¿Tienes otra duda? Escríbenos directo por WhatsApp.</p>
-      <a href="${waUrl('Hola, tengo una pregunta sobre ' + s.title)}" class="btn btn-navy" target="_blank" rel="noopener">
-        ${WA_BTN_HTML}
+      <a href="https://wa.me/528139078447?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20Minisplit%20en%20Monterrey" class="btn btn-navy" target="_blank" rel="noopener">
+        <svg class="ico-wa"><use href="#ico-wa"/></svg>
         Preguntar por WhatsApp
       </a>
     </div>
-    <div class="faq-list">${faqsHtml}
+    <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>¿Cada cuánto debo darle mantenimiento a mi minisplit?<span class="plus">+</span></summary>
+          <p>Lo ideal es cada 6 meses, especialmente antes del verano. En Monterrey, donde los equipos trabajan a máxima capacidad varios meses al año, el mantenimiento regular extiende la vida útil y reduce el consumo de electricidad.</p>
+        </details>
+        <details class="faq-item" open>
+          <summary>¿Por qué mi minisplit no enfría bien?<span class="plus">+</span></summary>
+          <p>Las causas más comunes son: filtros sucios, falta de gas refrigerante, serpentín del condensador sucio, o un problema en el compresor. Un diagnóstico profesional identifica la causa exacta.</p>
+        </details>
+        <details class="faq-item" open>
+          <summary>¿Cuánto cuesta instalar un minisplit?<span class="plus">+</span></summary>
+          <p>Depende de la capacidad del equipo y la complejidad de la instalación (distancia entre unidades, altura, cableado existente). Escríbanos por WhatsApp con los datos de su espacio y le cotizamos sin compromiso.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué tamaño de minisplit necesito?<span class="plus">+</span></summary>
+          <p>Depende del tamaño del cuarto, la orientación, y cuánto sol recibe. Como regla general: 1 tonelada (12,000 BTU) para cuartos de hasta 20m². Le ayudamos a elegir el tamaño correcto.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Trabajan con todas las marcas?<span class="plus">+</span></summary>
+          <p>Sí. Damos servicio a Mirage, Carrier, LG, Samsung, Hisense, Midea, Mabe y todas las marcas disponibles en el mercado.</p>
+        </details>
     </div>
   </div>
-</section>` : ''}
+</section>
 
 <section class="final-cta">
   <div class="final-cta-inner">
-    <img src="/Logo%20Blanco.webp" alt="${BRAND}" class="final-cta-logo">
-    <h2>${escapeHtml(s.ctaTitle || '¿Tienes un pendiente en casa?')}</h2>
-    <p>${escapeHtml(s.ctaSubtitle || 'Escríbenos hoy, cuéntanos qué pasa y recibe una cotización aproximada por mensaje.')}</p>
-    <a href="${waClose}" class="btn btn-wa" target="_blank" rel="noopener">
-      ${WA_BTN_HTML}
+    <img src="/Logo%20Blanco.webp" alt="Núcleo Hogar" class="final-cta-logo">
+    <h2>No sufra el calor — resolvemos hoy</h2>
+    <p>Escríbanos por WhatsApp, cuéntenos qué pasa con su equipo y reciba una cotización rápida.</p>
+    <a href="https://wa.me/528139078447?text=Hola%2C%20necesito%20servicio%20de%20minisplit%20en%20Monterrey.%20%C2%BFPueden%20ayudarme%3F" class="btn btn-wa" target="_blank" rel="noopener">
+      <svg class="ico-wa"><use href="#ico-wa"/></svg>
       Escribir por WhatsApp
     </a>
     <div class="small">Lun–Sáb · 8:00 a 20:00 · Monterrey y área metropolitana</div>
   </div>
 </section>
 
-${otherServicesHtml ? `<section class="otros">
+<section class="otros">
   <div class="container">
     <div class="section-head">
       <div class="left">
@@ -695,19 +536,33 @@ ${otherServicesHtml ? `<section class="otros">
         <h2>Otros servicios en tu hogar.</h2>
       </div>
     </div>
-    <div class="otros-grid">${otherServicesHtml}
+    <div class="otros-grid">
+        <a href="/electricista-monterrey/" class="otro-card">
+          <div class="ico-sm"><svg><use href="#ico-bolt"/></svg></div>
+          <div>
+            <h3>Electricista en Monterrey</h3>
+            <p>Ese switch que truena, esa luz que parpadea o ese apagón parcial que &quot;ya volverá&quot; pueden convertirse</p>
+          </div>
+        </a>
+        <a href="/plomeria-monterrey/" class="otro-card">
+          <div class="ico-sm"><svg><use href="#ico-drop"/></svg></div>
+          <div>
+            <h3>Plomería en Monterrey</h3>
+            <p>Esa fuga que &quot;no es tanta&quot;, ese drenaje lento o ese baño que no descarga bien está causando daño en </p>
+          </div>
+        </a>
     </div>
   </div>
-</section>` : ''}
+</section>
 
 <footer class="site">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="mark-wrap">
-          <img src="/Footer%20logo.webp" alt="${BRAND} — ${BRAND_TAGLINE}">
+          <img src="/Footer%20logo.webp" alt="Núcleo Hogar — Cuidamos lo que más amas">
           <div>
-            <div class="wm-1">${BRAND}</div>
+            <div class="wm-1">Núcleo Hogar</div>
             <span class="wm-2">CUIDAMOS LO QUE MÁS AMAS</span>
           </div>
         </div>
@@ -719,7 +574,7 @@ ${otherServicesHtml ? `<section class="otros">
           <li><a href="/electricista-monterrey/">Electricidad residencial</a></li>
           <li><a href="/minisplit-monterrey/">Minisplit</a></li>
           <li><a href="/plomeria-monterrey/">Plomería</a></li>
-          <li><a href="${waUrl('Hola, tengo varios pendientes en mi casa y quiero cotizar')}" target="_blank" rel="noopener">Mantenimiento general</a></li>
+          <li><a href="https://wa.me/528139078447?text=Hola%2C%20tengo%20varios%20pendientes%20en%20mi%20casa%20y%20quiero%20cotizar" target="_blank" rel="noopener">Mantenimiento general</a></li>
         </ul>
       </div>
       <div>
@@ -734,7 +589,7 @@ ${otherServicesHtml ? `<section class="otros">
       <div>
         <h5>Contacto</h5>
         <ul>
-          <li><a href="https://wa.me/${WA_NUMBER}" target="_blank" rel="noopener">WhatsApp: 81-3907-8447</a></li>
+          <li><a href="https://wa.me/528139078447" target="_blank" rel="noopener">WhatsApp: 81-3907-8447</a></li>
           <li><a href="mailto:contacto@nucleohogar.com.mx">contacto@nucleohogar.com.mx</a></li>
           <li>Lun–Sáb · 8:00 a 20:00</li>
           <li>Monterrey, N.L.</li>
@@ -742,20 +597,29 @@ ${otherServicesHtml ? `<section class="otros">
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© ${new Date().getFullYear()} ${BRAND} · ${BRAND_TAGLINE}</div>
+      <div>© 2026 Núcleo Hogar · Cuidamos lo que más amas</div>
       <div>Hecho en Monterrey</div>
     </div>
   </div>
 </footer>
 
-<a href="${waClose}" class="wa-float" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<a href="https://wa.me/528139078447?text=Hola%2C%20necesito%20servicio%20de%20minisplit%20en%20Monterrey.%20%C2%BFPueden%20ayudarme%3F" class="wa-float" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
   <svg><use href="#ico-wa"/></svg>
   <span>Chatear ahora</span>
 </a>
 
-${serviceSchema}
-${breadcrumbSchema}
-${faqSchema}
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Service","name":"Minisplit en Monterrey","description":"Instalación, mantenimiento y reparación de minisplit en Monterrey. Técnicos certificados, todas las marcas, garantía por escrito. Cotización rápida por WhatsApp.","provider":{"@type":"HomeAndConstructionBusiness","name":"Núcleo Hogar","url":"https://nucleohogar.com.mx","telephone":"+528139078447","email":"contacto@nucleohogar.com.mx","areaServed":{"@type":"City","name":"Monterrey"},"address":{"@type":"PostalAddress","addressLocality":"Monterrey","addressRegion":"Nuevo León","addressCountry":"MX"}},"serviceType":"Instalación y Mantenimiento de Minisplit","areaServed":[{"@type":"City","name":"Monterrey"},{"@type":"City","name":"San Pedro Garza García"},{"@type":"City","name":"Guadalupe"},{"@type":"City","name":"San Nicolás de los Garza"},{"@type":"City","name":"Apodaca"},{"@type":"City","name":"Escobedo"},{"@type":"City","name":"Santa Catarina"},{"@type":"City","name":"García"}]}
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://nucleohogar.com.mx/"},{"@type":"ListItem","position":2,"name":"Minisplit en Monterrey","item":"https://nucleohogar.com.mx/minisplit-monterrey/"}]}
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cada cuánto debo darle mantenimiento a mi minisplit?","acceptedAnswer":{"@type":"Answer","text":"Lo ideal es cada 6 meses, especialmente antes del verano. En Monterrey, donde los equipos trabajan a máxima capacidad varios meses al año, el mantenimiento regular extiende la vida útil y reduce el consumo de electricidad."}},{"@type":"Question","name":"¿Por qué mi minisplit no enfría bien?","acceptedAnswer":{"@type":"Answer","text":"Las causas más comunes son: filtros sucios, falta de gas refrigerante, serpentín del condensador sucio, o un problema en el compresor. Un diagnóstico profesional identifica la causa exacta."}},{"@type":"Question","name":"¿Cuánto cuesta instalar un minisplit?","acceptedAnswer":{"@type":"Answer","text":"Depende de la capacidad del equipo y la complejidad de la instalación (distancia entre unidades, altura, cableado existente). Escríbanos por WhatsApp con los datos de su espacio y le cotizamos sin compromiso."}},{"@type":"Question","name":"¿Qué tamaño de minisplit necesito?","acceptedAnswer":{"@type":"Answer","text":"Depende del tamaño del cuarto, la orientación, y cuánto sol recibe. Como regla general: 1 tonelada (12,000 BTU) para cuartos de hasta 20m². Le ayudamos a elegir el tamaño correcto."}},{"@type":"Question","name":"¿Trabajan con todas las marcas?","acceptedAnswer":{"@type":"Answer","text":"Sí. Damos servicio a Mirage, Carrier, LG, Samsung, Hisense, Midea, Mabe y todas las marcas disponibles en el mercado."}}]}
+  </script>
 
 <script>
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
@@ -780,7 +644,7 @@ if(f&&h&&'IntersectionObserver' in window){
 document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('a[href*="wa.me"]').forEach(function(link){
     link.addEventListener('click',function(e){
-      var servicio='${s.category || 'general'}';
+      var servicio='minisplit';
       var ubicacion='otro',el=e.currentTarget;
       if(el.classList.contains('nav-cta-desktop'))ubicacion='header';
       else if(el.classList.contains('wa-float'))ubicacion='flotante';
@@ -800,64 +664,4 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 
 </body>
-</html>`
-}
-
-// ─── Sitemap generator ───
-function generateSitemap(services) {
-  const now = new Date().toISOString().split('T')[0]
-  const urls = [
-    `  <url><loc>${DOMAIN}/</loc><changefreq>weekly</changefreq><priority>1.0</priority><lastmod>${now}</lastmod></url>`,
-    ...services.map(s => {
-      const slug = s.slug?.current || ''
-      return `  <url><loc>${DOMAIN}/${slug}/</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>${now}</lastmod></url>`
-    }),
-  ]
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.join('\n')}
-</urlset>`
-}
-
-// ─── Main build ───
-async function main() {
-  console.log(`🔨 Building ${BRAND} service pages from Sanity (diseño v2)...`)
-  console.log(`   Project: ${PROJECT_ID} | Dataset: ${DATASET}`)
-
-  const query = `*[_type == "service" && published == true] | order(sortOrder asc, title asc)`
-  const services = await sanityFetch(query)
-  console.log(`📦 Found ${services.length} published services`)
-
-  if (services.length === 0) {
-    console.log('⚠️  No published services found. Skipping page generation.')
-    console.log('   El index.html estático sigue desplegándose.')
-    return
-  }
-
-  for (const service of services) {
-    const slug = service.slug?.current
-    if (!slug) {
-      console.warn(`⚠️  Service "${service.title}" has no slug — skipping`)
-      continue
-    }
-
-    const dir = path.resolve(__dirname, slug)
-    fs.mkdirSync(dir, { recursive: true })
-
-    const html = servicePageHtml(service, services)
-    const filePath = path.join(dir, 'index.html')
-    fs.writeFileSync(filePath, html, 'utf8')
-    console.log(`  ✅ /${slug}/index.html`)
-  }
-
-  const sitemapPath = path.resolve(__dirname, 'sitemap.xml')
-  fs.writeFileSync(sitemapPath, generateSitemap(services), 'utf8')
-  console.log(`  ✅ sitemap.xml (${services.length + 1} URLs)`)
-
-  console.log(`\n🎉 Build complete! ${services.length} service pages generated.`)
-}
-
-main().catch((err) => {
-  console.error('💥 Build failed:', err)
-  process.exit(1)
-})
+</html>
